@@ -35,12 +35,7 @@ macro(Link_Models)
 
     target_link_libraries ( ${PROJECT_NAME}
 
-        #S2-CanvasModel
         S2-DragModel
-        S2-JsonModel
-        #S2-NodeModel
-        #S2-TreeModel
-        #S2-GraphModel
     )
 
 endmacro(Link_Models)
@@ -55,11 +50,6 @@ macro(Link_Systems)
     target_link_libraries ( ${PROJECT_NAME}
 
         S3-TableFrame
-        #S3-Diag
-        #S4-TaskManager
-        #S3-Pathstroke
-        #S3-undo
-        #S3-NetworkFrame
     )
 
 endmacro(Link_Systems)
