@@ -1,6 +1,1 @@
-#add_subdirectory(_CREST)
-#add_subdirectory(_Square)
 add_subdirectory(_Main)
-#add_subdirectory(_Task)
-#add_subdirectory(_Test)
-#add_subdirectory(_VESPA)
