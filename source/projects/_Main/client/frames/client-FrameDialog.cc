@@ -11,7 +11,6 @@
 #include "square-Frame.h"
 
 #include "square-TableFrame.h"
-#include "square-JsonFrame.h"
 
 
 /* |INCLUDES: PROJECT| */
@@ -26,9 +25,8 @@ FrameDialog::FrameDialog(QWidget *parent) : QDialog(parent) {
     /* ---------------------------------------------------- (MENU FRAMES) */
 
     Menu *squareMenu(new Menu(false)); {
-		squareMenu->register_Frame(new JsonFrame(), SQUARE_OBJ::button("JsonFrame", buttonSize));
-        squareMenu->register_Frame(new TableFrame(QStringList() << "1" << "2"), SQUARE_OBJ::button("TableFrame", buttonSize));
         squareMenu->register_Frame(new ClientDragFrame(), SQUARE_OBJ::button("DragFrame", buttonSize));
+        squareMenu->register_Frame(new TableFrame(QStringList() << "1" << "2"), SQUARE_OBJ::button("TableFrame", buttonSize));
         squareMenu->set_Frame(0);
     }
 

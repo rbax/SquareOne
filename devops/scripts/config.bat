@@ -1,15 +1,12 @@
 @echo off
 
-:: System
-set DRIVE=C:
-
 :: Qt Directory
-set QT_PATH=%DRIVE%\Qt
-set QT_VERSION=5.6
+set QT_PATH=C:\Qt
+set QT_VERSION=5.8
 set QT_COMPILER=msvc2015_64
-
-set QT_BIN=%QT_DIR%\bin
+set QT_DIR=%QT_PATH%\%QT_VERSION%\%QT_COMPILER%
 set QT_PLATFORM=%QT_DIR%\plugins\platforms
+set QT_BIN=%QT_DIR%\bin
 
 set MSCV_COMPILER=Visual Studio 14 2015 Win64
 
@@ -30,7 +27,7 @@ set DEPLOY_RELEASE=%DEPLOY%\%RELEASE%\
 set DEPLOY_DEBUG=%DEPLOY%\%DEBUG%\
 set DEPLOY_THIRD=%DEPLOY%\thirdparty
 
-::DeVOps Directories
+::DevOps Directories
 set DEVOPS_SCRIPTS=%DEVOPS%\scripts
 set DEVOPS_CMAKE=%DEVOPS%\cmake
 set DEVOPS_TOOLS=%DEVOPS%\tools
@@ -41,6 +38,5 @@ set THIRD_QT=%THIRD%\Qt
 set THIRD_MSVC=%THIRD%\MSVC
 set THIRD_PYTHON=%THIRD%\Python
 
-:; echo config complete
 :: Command shell overview
 :: https://technet.microsoft.com/en-us/library/bb490954.aspx
