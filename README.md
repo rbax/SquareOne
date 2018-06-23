@@ -7,3 +7,6 @@ Qt5
 MSVC
 
 by Ryan Baxter
+
+Update software versions in ~\devops\scripts\config.bat
+
