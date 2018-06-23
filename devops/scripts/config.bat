@@ -2,13 +2,13 @@
 
 :: Qt Directory
 set QT_PATH=C:\Qt
-set QT_VERSION=5.8
-set QT_COMPILER=msvc2015_64
+set QT_VERSION=5.11.1
+set QT_COMPILER=msvc2017_64
 set QT_DIR=%QT_PATH%\%QT_VERSION%\%QT_COMPILER%
 set QT_PLATFORM=%QT_DIR%\plugins\platforms
 set QT_BIN=%QT_DIR%\bin
 
-set MSCV_COMPILER=Visual Studio 14 2015 Win64
+set MSCV_COMPILER=Visual Studio 15 2017 Win64
 
 :: Terms
 set RELEASE=bin\Release
