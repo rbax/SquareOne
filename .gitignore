@@ -1,7 +1,2 @@
-build/
 desktop.ini
-source/thirdparty/
-devops/cmake/.vscode/.browse.VC.db
-*.dll
-devops/scripts/.vscode/.browse.VC.db
-devops/.vscode/.browse.VC.db
+build/

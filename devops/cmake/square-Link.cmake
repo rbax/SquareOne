@@ -36,6 +36,8 @@ macro(Link_Models)
     target_link_libraries ( ${PROJECT_NAME}
 
         S2-DragModel
+        S2-JsonModel
+        S2-GraphModel
     )
 
 endmacro(Link_Models)

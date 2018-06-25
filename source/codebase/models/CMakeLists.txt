@@ -1,1 +1,5 @@
+# add_subdirectory(S2-CanvasModel)
 add_subdirectory(S2-DragModel)
+add_subdirectory(S2-GraphModel)
+add_subdirectory(S2-JsonModel)
+# add_subdirectory(S2-OSGModel)
