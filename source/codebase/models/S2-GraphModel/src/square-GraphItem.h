@@ -11,16 +11,16 @@
 struct S2_GRAPHMODEL_EXPORT GraphItem {
 
     GraphItem() {}
-  
+
     QColor fillColor = Qt::darkBlue;
     QColor handleColor = Qt::white;
     QColor borderColor = Qt::black;
     QColor textColor = Qt::black;
 
     qreal penWidth = 1;
-    QRectF rect = QRectF(-100 - penWidth / 20, 
-                         -100 - penWidth / 20, 
-                          200 + penWidth, 
+    QRectF rect = QRectF(-100 - penWidth / 20,
+                         -100 - penWidth / 20,
+                          200 + penWidth,
                           200 + penWidth);
 };
 

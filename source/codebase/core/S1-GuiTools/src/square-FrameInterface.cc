@@ -85,12 +85,11 @@ void FrameInterface::insert_Widget(QWidget *_widget, Location _location) {
 }
 
 
-FrameInterfacePrivate::FrameInterfacePrivate(FrameInterface *_q)
-    :
-    q_ptr_(_q),
-    headContainer_(0),
-    bodyContainer_(0),
-    footContainer_(0),
-    toolButton_(0) {
+FrameInterfacePrivate::FrameInterfacePrivate(FrameInterface* _q) :
+	q_ptr_(_q),
+	headContainer_(0),
+	bodyContainer_(0),
+	footContainer_(0),
+	toolButton_(0) {
 
 }

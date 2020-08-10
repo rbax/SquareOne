@@ -4,7 +4,7 @@ IF NOT EXIST %BUILD% mkdir %BUILD%
 cd build
 ::cmake -Bbuild -H.
 
-cmake  ../ -G "%MSCV_COMPILER%" 
+cmake  ../ -G "%MSCV_COMPILER%"
 
 
 cmake --build . --target ALL_BUILD --config Debug

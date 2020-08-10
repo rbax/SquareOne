@@ -24,5 +24,5 @@ GraphModel::GraphModel() : z_ptr_(new GraphModelPrivate(this)) {
 
 GraphModelPrivate::GraphModelPrivate(GraphModel *q) : q_ptr_(q) {
 
-   
+
 }

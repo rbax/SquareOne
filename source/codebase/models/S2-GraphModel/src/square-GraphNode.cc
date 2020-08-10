@@ -39,4 +39,3 @@ QPolygon NodeInterface::triangle(QRectF &_rect) {
 }
 
 /* ------------------------------------------------------------------ [PRIVATE] */
-

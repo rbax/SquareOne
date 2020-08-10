@@ -55,5 +55,5 @@
 		# /MP							# Enables the compiler to create one or more copies of itself, each in a separate process.
 										# These copies simultaneously compile the source files, significantly reducing total build time.
 		# /fPIE                         # Address space layout randomization
-    
+
 		# /D_REENTRANT                  # Compiler will use thread safe (i.e. re-entrant) versions of several functions in the C library

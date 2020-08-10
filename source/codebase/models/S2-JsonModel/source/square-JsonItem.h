@@ -39,4 +39,4 @@ private: /* --------------------------------------------------------- [PRIVATE] 
 
     QStringList values_ {};
     QList<JsonItem*> children_;
-}; 
+};

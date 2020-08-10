@@ -41,7 +41,7 @@ public:
 
     static
         QStringList parse_ByLine(const QString &fullFilePath);
-    
+  
     static
        void copy_DataFile(QString &container, const QString &filePath);
 
