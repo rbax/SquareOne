@@ -34,12 +34,16 @@ endmacro(Define_Qt)
 macro(Settings_Qt)
 
     find_package ( Qt5 COMPONENTS
-
         Core
         Gui
-        Network
         Widgets
+        Network
+
+        Quick
+        QuickWidgets
+        QML
         OpenGL
+
         REQUIRED
     )
 
@@ -66,21 +70,20 @@ endmacro(Deploy_Qt)
 
 macro(Link_Qt)
 
-    qt5_use_modules( ${PROJECT_NAME}
+    target_link_libraries( ${PROJECT_NAME}
+        Qt5::Core
+        Qt5::Gui
+        Qt5::Widgets
+        Qt5::Network
 
-        Core
-        Gui
-		Widgets
-        Network
-
-        Quick
-        QuickWidgets
-        Qml
-        OpenGL
-		#Xml
-		#WebEngineWidgets
-		#WebEngineCore
-		#WebEngine
+        Qt5::Quick
+        Qt5::QuickWidgets
+        Qt5::Qml
+        Qt5::OpenGL
+		#Qt5::Xml
+		#Qt5::WebEngineWidgets
+		#Qt5::WebEngineCore
+		#Qt5::WebEngine
     )
 
 endmacro(Link_Qt)
