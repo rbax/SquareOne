@@ -2,8 +2,8 @@
 
 :: Qt Directory
 set QT_PATH=C:\Qt
-set QT_VERSION=5.13.1
-set QT_COMPILER=msvc2017_64
+set QT_VERSION=5.15.0
+set QT_COMPILER=msvc2019_64
 set QT_DIR=%QT_PATH%\%QT_VERSION%\%QT_COMPILER%
 set QT_PLATFORM=%QT_DIR%\plugins\platforms
 set QT_BIN=%QT_DIR%\bin
