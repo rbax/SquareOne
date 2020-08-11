@@ -11,13 +11,13 @@
 
 class _CLIENT_EXPORT ClientDragFrame : public FrameInterface {
 
-   Q_INTERFACES(FrameInterface)
+    Q_INTERFACES(FrameInterface)
 
-      Q_OBJECT
+        Q_OBJECT
 
 public: /* ---------------------------------------------------------- [PUBLIC] */
 
-	ClientDragFrame();
+    ClientDragFrame();
 
 
 private: /* --------------------------------------------------------- [PRIVATE] */

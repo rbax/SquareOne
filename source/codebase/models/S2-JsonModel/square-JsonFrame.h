@@ -1,5 +1,6 @@
 #pragma once
 
+// Includes Qt
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QNetworkAccessManager>
@@ -12,9 +13,11 @@ class QAction;
 class QNetworkReply;
 class QLineEdit;
 
+// Includes Square
 #include "square-JsonModel.h"
 #include "square-FrameInterface.h"
 
+// Includes Local
 #include "S2-JsonModel_Export.h"
 
 
@@ -22,11 +25,11 @@ class S2_JSONMODEL_EXPORT JsonFrame : public FrameInterface {
 
     Q_INTERFACES(FrameInterface)
 
-    Q_OBJECT
+        Q_OBJECT
 
 public: /* ---------------------------------------------------------- [PUBLIC] */
 
-    explicit JsonFrame(QWidget *parent = 0);
+    explicit JsonFrame(QWidget* parent = 0);
 
     QAction* getAction_OpenFile();
     QAction* getAction_TreeIn();
@@ -34,35 +37,34 @@ public: /* ---------------------------------------------------------- [PUBLIC] *
     QAction* getAction_NetPost();
     QAction* getAction_NetGet();
 
-    public slots:
+public slots:
     void update_Actions();
 
-    private slots :
+private slots:
     void httpFinished();
 
 
 private: /* --------------------------------------------------------- [PRIVATE] */
 
     QJsonDocument document_;
-    JsonModel *model_;
+    JsonModel* model_;
 
-    QTreeView *treeView_;
-    QTextEdit *textEdit_;
-    QTextEdit *output_;
+    QTreeView* treeView_;
+    QTextEdit* textEdit_;
+    QTextEdit* output_;
 
-    QAction *action_FileOpen_ = 0;
-    QAction *action_FileClose_ = 0;
-    QAction *action_Refresh_ = 0;
-    QAction *action_RefreshOutput = 0;
-    QAction *action_NetPost_ = 0;
-    QAction *action_NetGet_ = 0;
+    QAction* action_FileOpen_ = 0;
+    QAction* action_FileClose_ = 0;
+    QAction* action_Refresh_ = 0;
+    QAction* action_RefreshOutput = 0;
+    QAction* action_NetPost_ = 0;
+    QAction* action_NetGet_ = 0;
 
 
-    QLineEdit *urlLineEdit_;
-    QTextEdit *responseTextEdit_;
+    QLineEdit* urlLineEdit_;
+    QTextEdit* responseTextEdit_;
 
     QUrl url_;
-    QNetworkReply *reply_;
+    QNetworkReply* reply_;
     QNetworkAccessManager manager_;
-
 };

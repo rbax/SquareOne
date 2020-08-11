@@ -13,24 +13,24 @@ class QGraphicsSceneMouseEvent;
 class S2_GRAPHMODEL_EXPORT GraphTextItem : public QGraphicsTextItem, public NodeInterface {
 
     Q_INTERFACES(NodeInterface)
-    Q_OBJECT
+        Q_OBJECT
 
 public: /* ---------------------------------------------------------- [PUBLIC] */
-	
-	enum { Type = UserType + IType::TEXT };
 
-    GraphTextItem(QGraphicsItem *parent = 0);
+    enum { Type = UserType + IType::TEXT };
 
-	int type() const Q_DECL_OVERRIDE { return Type; }
+    GraphTextItem(QGraphicsItem* parent = 0);
+
+    int type() const Q_DECL_OVERRIDE { return Type; }
 
 signals: /* --------------------------------------------------------- [SIGNALS] */
 
-    void signal_LostFocus(GraphTextItem *item);
-    void signal_SelectionChange(QGraphicsItem *item);
+    void signal_LostFocus(GraphTextItem* item);
+    void signal_SelectionChange(QGraphicsItem* item);
 
 protected: /* ------------------------------------------------------- [PROTECTED] */
 
-    QVariant itemChange(GraphicsItemChange change, const QVariant &value) Q_DECL_OVERRIDE;
-    void focusOutEvent(QFocusEvent *event) Q_DECL_OVERRIDE;
-    void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) Q_DECL_OVERRIDE;
+    QVariant itemChange(GraphicsItemChange change, const QVariant& value) Q_DECL_OVERRIDE;
+    void focusOutEvent(QFocusEvent* event) Q_DECL_OVERRIDE;
+    void mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event) Q_DECL_OVERRIDE;
 };

@@ -7,7 +7,6 @@
 #include "_client_Export.h"
 
 
-
 class _CLIENT_EXPORT FrameDialog : public QDialog {
 
     Q_OBJECT
@@ -15,7 +14,7 @@ class _CLIENT_EXPORT FrameDialog : public QDialog {
 
 public: /* ---------------------------------------------------------- [PUBLIC] */
 
-    FrameDialog(QWidget *parent = 0);
+    FrameDialog(QWidget* parent = 0);
 
 
 private: /* --------------------------------------------------------- [PRIVATE] */

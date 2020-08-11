@@ -15,16 +15,16 @@ class S3_TABLEFRAME_EXPORT TableFramePrivate {
 
 public: /* ---------------------------------------------------------- [PUBLIC] */
 
-    TableFramePrivate(TableFrame *q);
+    TableFramePrivate(TableFrame* q);
 
-    QLineEdit *searchLineEdit_;
+    QLineEdit* searchLineEdit_;
 
-    QTableWidget *tableWidget_;
+    QTableWidget* tableWidget_;
 
     QStringList columnNamesList_;
 
 private: /* --------------------------------------------------------- [PRIVATE] */
 
-    TableFrame *q_ptr_;
+    TableFrame* q_ptr_;
 
 };

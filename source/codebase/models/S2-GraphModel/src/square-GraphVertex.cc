@@ -9,7 +9,7 @@
 
 /* ------------------------------------------------------------------ [PUBLIC] */
 
-GraphVertex::GraphVertex(QMenu *_menu, QGraphicsItem *parent) 
+GraphVertex::GraphVertex(QMenu* _menu, QGraphicsItem* parent)
     : contextMenu_(_menu), QGraphicsItem(parent), NodeInterface(NodeInterface::VERTEX) {
 
     setFlag(QGraphicsItem::ItemIsMovable, true);
@@ -17,7 +17,7 @@ GraphVertex::GraphVertex(QMenu *_menu, QGraphicsItem *parent)
     setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 }
 
-void GraphVertex::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
+void GraphVertex::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) {
 
     QPen pen(item()->textColor);
     pen.setWidth(1);
@@ -56,7 +56,6 @@ void GraphVertex::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
     painter->setBrush(item()->textColor);
 
     if (shape_ == Triangle) {
-
         rect.adjust(0, rect.height() / 2, 0, 0);
     }
 
@@ -66,7 +65,6 @@ void GraphVertex::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 QRectF GraphVertex::resizeHandle() const {
 
     QPointF br(item()->rect.bottomRight());
-
     return QRectF(br - QPointF(handleSize(), handleSize()), br);
 }
 
@@ -75,20 +73,18 @@ QPolygonF GraphVertex::polygon() const {
     return QGraphicsItem::mapFromItem(this, item()->rect);
 }
 
-void GraphVertex::removeEdge(GraphEdge *_edge) {
+void GraphVertex::removeEdge(GraphEdge* _edge) {
 
     int index(edgeList_.indexOf(_edge));
 
     if (index != -1) {
-
         edgeList_.removeAt(index);
     }
 }
 
 void GraphVertex::removeEdges() {
 
-    foreach(GraphEdge *edge, edgeList_) {
-
+    foreach(GraphEdge * edge, edgeList_) {
         edge->startItem_->removeEdge(edge);
         edge->endItem_->removeEdge(edge);
         scene()->removeItem(edge);
@@ -96,19 +92,17 @@ void GraphVertex::removeEdges() {
     }
 }
 
-void GraphVertex::addEdge(GraphEdge *_edge) {
+void GraphVertex::addEdge(GraphEdge* _edge) {
 
     edgeList_.append(_edge);
 }
 
 /* ------------------------------------------------------------------ [PROTECTED] */
 
-void GraphVertex::mousePressEvent(QGraphicsSceneMouseEvent *event) {
+void GraphVertex::mousePressEvent(QGraphicsSceneMouseEvent* event) {
 
     mouseDown_ = resizeHandle().contains(event->pos());
-
     if (mouseDown_) {
-
         event->accept();
         mousePressOffset_ = (item()->rect.bottomRight() - event->pos());
     }
@@ -116,10 +110,9 @@ void GraphVertex::mousePressEvent(QGraphicsSceneMouseEvent *event) {
     else QGraphicsItem::mousePressEvent(event);
 }
 
-void GraphVertex::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
+void GraphVertex::mouseReleaseEvent(QGraphicsSceneMouseEvent* event) {
 
     if (mouseDown_) {
-
         event->accept();
         mouseDown_ = false;
     }
@@ -127,18 +120,14 @@ void GraphVertex::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
     else QGraphicsItem::mouseReleaseEvent(event);
 }
 
-void GraphVertex::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
+void GraphVertex::mouseMoveEvent(QGraphicsSceneMouseEvent* event) {
 
     if (mouseDown_) {
-
         event->accept();
-        QRectF eventRect(QRectF(item()->rect.topLeft(), event->pos() + mousePressOffset_)); {
-
+        QRectF eventRect(QRectF(item()->rect.topLeft(), event->pos() + mousePressOffset_));
             eventRect.setSize(eventRect.size().expandedTo(minSize()));
-        }
 
         if (item()->rect != eventRect) {
-
             prepareGeometryChange();
             item()->rect = eventRect;
         }
@@ -148,19 +137,17 @@ void GraphVertex::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 
-void GraphVertex::contextMenuEvent(QGraphicsSceneContextMenuEvent *event) {
+void GraphVertex::contextMenuEvent(QGraphicsSceneContextMenuEvent* event) {
 
     scene()->clearSelection();
     setSelected(true);
     contextMenu_->exec(event->screenPos());
 }
 
-QVariant GraphVertex::itemChange(GraphicsItemChange _change, const QVariant &_value) {
+QVariant GraphVertex::itemChange(GraphicsItemChange _change, const QVariant& _value) {
 
     if (_change == QGraphicsItem::ItemPositionChange) {
-
-        foreach(GraphEdge *edge, edgeList_) {
-
+        foreach(GraphEdge * edge, edgeList_) {
             edge->updatePosition();
         }
     }

@@ -8,6 +8,7 @@ class QStackedWidget;
 /* |INCLUDES: SQUARE| */
 #include "S1-GuiTools_Export.h"
 #include "square-FrameInterface.h"
+
 class Frame;
 
 class S1_GUITOOLS_EXPORT MenuPrivate;
@@ -18,7 +19,7 @@ public: /* ---------------------------------------------------------- [PUBLIC] *
 
     Menu(bool menu_hides = true);
 
-    int	register_Frame(FrameInterface *frame, QToolButton *button);
+    int	register_Frame(FrameInterface* frame, QToolButton* button);
 
     /* ------------------------------------- (SET) */
 
@@ -34,6 +35,6 @@ public: /* ---------------------------------------------------------- [PUBLIC] *
 
 private: /* --------------------------------------------------------- [PRIVATE] */
 
-    MenuPrivate *z_ptr_;
+    MenuPrivate* z_ptr_;
 
 };

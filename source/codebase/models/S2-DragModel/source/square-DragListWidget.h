@@ -13,7 +13,7 @@ class S2_DRAGMODEL_EXPORT DragListWidget : public QListWidget {
 
 public: /* ---------------------------------------------------------- [PUBLIC] */
 
-    explicit DragListWidget(QSize size, QWidget *parent = 0);
+    explicit DragListWidget(QSize size, QWidget* parent = 0);
 
 
 protected: /* ------------------------------------------------------- [PROTECTED] */

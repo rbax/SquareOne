@@ -4,15 +4,13 @@
 #include <QMimeData>
 #include <QDebug>
 
-/* |INCLUDES: SQUARE| */
-
 /* |INCLUDES: PROJECT| */
 #include "square-DraglistWidget.h"
 #include "square-DragItem.h"
 
 /* ------------------------------------------------------------------ [PUBLIC] */
 
-DragListWidget::DragListWidget(QSize _size, QWidget *_parent)
+DragListWidget::DragListWidget(QSize _size, QWidget* _parent)
     :
     QListWidget(_parent),
     size_(_size),
@@ -31,27 +29,24 @@ DragListWidget::DragListWidget(QSize _size, QWidget *_parent)
 
 void DragListWidget::startDrag(Qt::DropActions) {
 
-    QByteArray itemData;
-    QDataStream dataStream(&itemData, QIODevice::WriteOnly);
 
-    QListWidgetItem *item = currentItem();
+
+    QListWidgetItem* item = currentItem();
     QPixmap pixmap = qvariant_cast<QPixmap>(item->data(Qt::UserRole));
     int itemID = item->data(Qt::UserRole + 1).toInt();
 
+    QByteArray itemData;
+    QDataStream dataStream(&itemData, QIODevice::WriteOnly);
     dataStream << pixmap << itemID;
 
-    QMimeData *mimeData = new QMimeData; {
+    QMimeData* mimeData = new QMimeData;
+    mimeData->setData(mimeString_, itemData);
 
-        mimeData->setData(mimeString_, itemData);
-    }
+    QDrag* drag = new QDrag(this);
+    drag->setPixmap(pixmap);
+    drag->setMimeData(mimeData);
+    drag->setHotSpot(QPoint(pixmap.width() / 2,
+                     pixmap.height() / 2));
 
-    QDrag *drag = new QDrag(this); {
-
-        drag->setPixmap(pixmap);
-        drag->setMimeData(mimeData);
-        drag->setHotSpot(QPoint(pixmap.width() / 2,
-                         pixmap.height() / 2));
-    }
-
-    if (drag->exec(Qt::MoveAction) == Qt::MoveAction){/* ? */};
+    if (drag->exec(Qt::MoveAction) == Qt::MoveAction) {/* ? */ };
 }

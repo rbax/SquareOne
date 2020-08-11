@@ -9,58 +9,55 @@
 /* --------------------------------------------------------------- [CSV FUNCIONS] */
 SQUARE_START
 
-    void Styles::set_FrameStyle(QFrame &_frame, FrameStyle _style) {
+void Styles::set_FrameStyle(QFrame& _frame, FrameStyle _style) {
 
-        switch (_style) {
+    switch (_style) {
 
-            /* --------------------------------------------- (DEEP) */
-            case DEEP: {
+        /* --------------------------------------------- (DEEP) */
+        case DEEP:
+            _frame.setFrameStyle(QFrame::Panel | QFrame::Sunken);
+            _frame.setLineWidth(3);
+            _frame.setMidLineWidth(3);
+            break;
+    }
+}
 
-                _frame.setFrameStyle(QFrame::Panel | QFrame::Sunken);
-                _frame.setLineWidth(3);
-                _frame.setMidLineWidth(3);
 
-                break;
-            }
-        }
+void Styles::set_LayoutStyle(QLayout& _layout, LayoutStyle _style) {
+
+    _layout.setContentsMargins(0, 0, 0, 0);
+}
+
+void Styles::set_PaletteStyle(QPalette& _palette, PaletteStyle _style) {
+
+    QColor window, button, highlight, buttonText, windowText;
+
+    // background, foreground, base, alternateBase, toolTipBase, ToolTipText, Text, BrightText
+
+
+    switch (_style) {
+
+        /* --------------------------------------------- (STANDARD) */
+
+        case STANDARD:
+            button = QColor(105, 105, 105);
+            window = QColor(53, 53, 53);
+            highlight = QColor(66, 192, 251); // Caribbean Blue
+            buttonText = QColor(Qt::white);
+            windowText = QColor(Qt::black);
     }
 
-
-    void Styles::set_LayoutStyle(QLayout &_layout, LayoutStyle _style) {
-
-        _layout.setContentsMargins(0, 0, 0, 0);
-    }
-
-    void Styles::set_PaletteStyle(QPalette &_palette, PaletteStyle _style) {
-
-        QColor window, button, highlight, buttonText, windowText;
-
-        // background, foreground, base, alternateBase, toolTipBase, ToolTipText, Text, BrightText
-
-
-        switch (_style) {
-
-            /* --------------------------------------------- (STANDARD) */
-            case STANDARD: {
-
-                button = QColor(105, 105, 105);
-                window = QColor(53, 53, 53);
-                highlight = QColor(66, 192, 251); // Caribbean Blue
-                buttonText = QColor(Qt::white);
-                windowText = QColor(Qt::black);
-            }
-        }
-        _palette.setColor(QPalette::Window, window);
-        _palette.setColor(QPalette::Button, button);
-        _palette.setColor(QPalette::Highlight, highlight);
-        _palette.setColor(QPalette::ButtonText, buttonText);
-        _palette.setColor(QPalette::WindowText, windowText);
-    }
+    _palette.setColor(QPalette::Window, window);
+    _palette.setColor(QPalette::Button, button);
+    _palette.setColor(QPalette::Highlight, highlight);
+    _palette.setColor(QPalette::ButtonText, buttonText);
+    _palette.setColor(QPalette::WindowText, windowText);
+}
 
 SQUARE_END
 
 
-/* 
+/*
 
 http://www.rapidtables.com/web/color/RGB_Color.htm
 

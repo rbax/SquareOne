@@ -29,14 +29,14 @@ public: /* ---------------------------------------------------------- [PUBLIC] *
     /* ------------------------------------- (CREATE) */
 
     /* each call adds a frame to the menu with a collection of items */
-    void create_ItemFrame(QToolButton *button, const QStringList &imagePathList);
+    void create_ItemFrame(QToolButton* button, const QStringList& imagePathList);
 
-    void create_ItemFrame(QToolButton *button, const QList<DragItem*> &dragItemList);
+    void create_ItemFrame(QToolButton* button, const QList<DragItem*>& dragItemList);
 
-    DragItem* create_DragItem(const QString &imagePath);
+    DragItem* create_DragItem(const QString& imagePath);
 
 
 private: /* --------------------------------------------------------- [PRIVATE] */
 
-    DragFramePrivate *z_ptr_;
+    DragFramePrivate* z_ptr_;
 };

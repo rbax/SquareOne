@@ -15,7 +15,6 @@ class S1_GUITOOLS_EXPORT FrameInterface : public QFrame {
 public: /* ---------------------------------------------------------- [PUBLIC] */
 
     enum Location {
-
         HEADER = 0,
         BODY = 1,
         FOOTER,
@@ -31,11 +30,11 @@ public: /* ---------------------------------------------------------- [PUBLIC] *
 
 protected: /* ------------------------------------------------------- [PROTECTED] */
 
-    FrameInterface(FrameInterfacePrivate &d);
+    FrameInterface(FrameInterfacePrivate& d);
 
     void insert_Widget(QWidget*, Location location = Location::BODY);
 
-    FrameInterfacePrivate *z_ptr_;
+    FrameInterfacePrivate* z_ptr_;
 };
 
 

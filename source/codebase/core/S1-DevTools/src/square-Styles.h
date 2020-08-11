@@ -12,43 +12,38 @@ class FrameInterface;
 
 SQUARE_START
 
-    class S1_DEVTOOLS_EXPORT Styles {
+class S1_DEVTOOLS_EXPORT Styles {
 
-    public:
+public:
 
-
-        enum FrameStyle {
-
-            DEEP = 0,
-        };
-
-        enum LayoutStyle {
-
-            THIN = 0,
-        };
-
-        enum PaletteStyle {
-
-            STANDARD = 0,
-
-        };
-
-        /* ---------------------------------------------------------- (FRAME STYLES) */
-
-        static
-            void set_FrameStyle(QFrame &frame, 
-                                FrameStyle style = DEEP);
-
-
-        /* ---------------------------------------------------------- (LAYOUT STYLES) */
-
-        static
-            void set_LayoutStyle(QLayout &layout, 
-                                 LayoutStyle style = THIN);
-
-        static
-            void set_PaletteStyle(QPalette &palette, 
-                                  PaletteStyle style = STANDARD);
+    enum FrameStyle {
+        DEEP = 0,
     };
+
+    enum LayoutStyle {
+        THIN = 0,
+    };
+
+    enum PaletteStyle {
+        STANDARD = 0,
+    };
+
+    /* ---------------------------------------------------------- (FRAME STYLES) */
+
+    static
+        void set_FrameStyle(QFrame& frame,
+                            FrameStyle style = DEEP);
+
+
+    /* ---------------------------------------------------------- (LAYOUT STYLES) */
+
+    static
+        void set_LayoutStyle(QLayout& layout,
+                             LayoutStyle style = THIN);
+
+    static
+        void set_PaletteStyle(QPalette& palette,
+                              PaletteStyle style = STANDARD);
+};
 
 SQUARE_END

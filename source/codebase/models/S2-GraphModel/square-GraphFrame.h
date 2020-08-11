@@ -34,11 +34,11 @@ class S2_GRAPHMODEL_EXPORT GraphFrame : public FrameInterface {
     Q_INTERFACES(FrameInterface)
 
         Q_OBJECT
-        
+
         enum SelectionType { // finite list of possible selection states
 
         ITEM = 0, // selected a single item
-        STACK= 1, // a stack of unrelated "single" items
+        STACK = 1, // a stack of unrelated "single" items
         SET // a collection of items tied to a defined "item set"
     };
 
@@ -84,7 +84,7 @@ private slots: /* --------------------------------------------------- [PRIVATE S
 private: /* --------------------------------------------------------- [PRIVATE] */
 
     /* ------------------------------------------ (TOOLBARS) */
-    
+
     QToolBar* create_ModeToolBar();
     QToolBar* create_ColorToolBar();
     QToolBar* create_EditToolBar();
@@ -98,66 +98,66 @@ private: /* --------------------------------------------------------- [PRIVATE] 
     QWidget* menu_ItemGUI();
     QWidget* menu_ItemData();
 
-    QMenu *create_ColorMenu(const char *slot, QColor defaultColor);
+    QMenu* create_ColorMenu(const char* slot, QColor defaultColor);
 
-    QIcon create_ColorToolButtonIcon(const QString &image, QColor color);
+    QIcon create_ColorToolButtonIcon(const QString& image, QColor color);
     QIcon create_ColorIcon(QColor color);
 
-    QSlider *zoomSlider_;
-    GraphScene *scene_;
-    QGraphicsView *view_;
+    QSlider* zoomSlider_;
+    GraphScene* scene_;
+    QGraphicsView* view_;
 
     /* ------------------------------------------ (ACTIONS) */
 
-    QAction *zoomResetAction_ = 0;
-    QAction *zoomInAction_ = 0;
-    QAction *zoomOutAction_ = 0;
+    QAction* zoomResetAction_ = 0;
+    QAction* zoomInAction_ = 0;
+    QAction* zoomOutAction_ = 0;
 
-    QAction *exitAction_ = 0;
-    QAction *addAction_ = 0;
-    QAction *deleteAction_ = 0;
+    QAction* exitAction_ = 0;
+    QAction* addAction_ = 0;
+    QAction* deleteAction_ = 0;
 
-    QAction *sendForwardAction_ = 0;
-    QAction *sendBackAction_ = 0;
-    QAction *aboutAction_ = 0;
+    QAction* sendForwardAction_ = 0;
+    QAction* sendBackAction_ = 0;
+    QAction* aboutAction_ = 0;
 
-    QAction *boldAction_ = 0;
-    QAction *underlineAction_ = 0;
-    QAction *italicAction_ = 0;
+    QAction* boldAction_ = 0;
+    QAction* underlineAction_ = 0;
+    QAction* italicAction_ = 0;
 
-    QAction *textAction_ = 0;
-    QAction *fillAction_ = 0;
-    QAction *lineAction_ = 0;
+    QAction* textAction_ = 0;
+    QAction* fillAction_ = 0;
+    QAction* lineAction_ = 0;
 
     /* ------------------------------------------ (Item Collections) */
 
-    QMenu *itemMenu_;
+    QMenu* itemMenu_;
 
-    QComboBox *fontSizeCombo_;
+    QComboBox* fontSizeCombo_;
 
-    QFontComboBox *fontCombo_;
+    QFontComboBox* fontCombo_;
 
-    QButtonGroup *pointerModeGroup;
-    QButtonGroup *backgroundButtonGroup;
-    QButtonGroup *pointerTypeGroupbuttonGroup;
+    QButtonGroup* pointerModeGroup;
+    QButtonGroup* backgroundButtonGroup;
+    QButtonGroup* pointerTypeGroupbuttonGroup;
 
     /* ------------------------------------------ (Buttons) */
 
-    QToolButton *fontColorButton_;
-    QToolButton *fillColorButton_;
-    QToolButton *lineColorButton_;
+    QToolButton* fontColorButton_;
+    QToolButton* fillColorButton_;
+    QToolButton* lineColorButton_;
 
-    QToolButton *pointerButton_;
+    QToolButton* pointerButton_;
 
 /* test item menus */
 
-    QLabel *colorLabel;
-    DialogOptionsWidget *colorDialogOptionsWidget;
+    QLabel* colorLabel;
+    DialogOptionsWidget* colorDialogOptionsWidget;
 
- 
-    QComboBox *item_TextSizeCombo_;
 
-    QFontComboBox *item_TextFontCombo_;
+    QComboBox* item_TextSizeCombo_;
 
-    QSplitter *splitter_;
+    QFontComboBox* item_TextFontCombo_;
+
+    QSplitter* splitter_;
 };

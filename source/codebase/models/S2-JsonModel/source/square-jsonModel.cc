@@ -10,7 +10,7 @@
 #include "square.h"
 #include "square-JsonModel.h"
 
-JsonModel::JsonModel(const QStringList &_headers, QObject *_parent)
+JsonModel::JsonModel(const QStringList& _headers, QObject* _parent)
     : QAbstractItemModel(_parent),
     headerList_(_headers),
     rootItem_(new JsonItem) {
@@ -26,15 +26,16 @@ JsonModel::~JsonModel() {
 /* |ITEM DATA HANDLING|
 ----------------------------------------------------------------- */
 
-QVariant JsonModel::data(const QModelIndex &_index, int _role) const {
+QVariant JsonModel::data(const QModelIndex& _index, int _role) const {
 
     if (_index.isValid()) {
 
-        JsonItem *item(get_Item(_index));
+        JsonItem* item(get_Item(_index));
 
         switch (_role) {
 
-            case Qt::ForegroundRole: { // Text Color
+            case Qt::ForegroundRole:
+            { // Text Color
 
                 if (_index.column() == Column::Key) {
 
@@ -43,25 +44,23 @@ QVariant JsonModel::data(const QModelIndex &_index, int _role) const {
                 break;
             }
 
-            case Qt::DecorationRole: { // Icons
+            case Qt::DecorationRole:
+            { // Icons
 
                 if (_index.column() == Column::Key) {
-
                     return iconList_.value(item->type_);
                 }
                 break;
             }
 
             case Qt::DisplayRole: // Read Only
-            case Qt::EditRole: { // Read & Write
+            case Qt::EditRole:
+            { // Read & Write
 
                 if (_index.column() == Column::Key) {
-
                     return item->key_;
                 }
-
                 else {
-
                     return item->value(_index.column() - Column::Value);
                 }
             }
@@ -73,49 +72,37 @@ QVariant JsonModel::data(const QModelIndex &_index, int _role) const {
     return QVariant();
 }
 
-bool JsonModel::setData(const QModelIndex &_index, const QVariant &_value, int _role) {
+bool JsonModel::setData(const QModelIndex& _index, const QVariant& _value, int _role) {
 
     if (_role != Qt::EditRole || _index.column() == Column::Key) {
-
         return false;
     }
 
     /* --------------------------------------------------------- [ITEM] */
-    JsonItem *item(get_Item(_index)); {
-
-        if (item->type_ == QJsonValue::Object) {
-
-            return false;
-        }
-        else {
-
-            item->updateValue(_value.toString(), (_index.column() - Column::Value));
-        }
+    JsonItem* item(get_Item(_index));
+    if (item->type_ == QJsonValue::Object) {
+        return false;
+    }
+    else {
+        item->updateValue(_value.toString(), (_index.column() - Column::Value));
     }
 
     /* --------------------------------------------------------- [PARENT] */
-    JsonItem *parent(item->parent_); {
-
-        if (!parent) return false;
-
-        if (parent->type_ == QJsonValue::Array) {
-
-            item = parent;
-        }
+    JsonItem* parent(item->parent_);
+    if (!parent) return false;
+    if (parent->type_ == QJsonValue::Array) {
+        item = parent;
     }
 
     /* --------------------------------------------------------- [GRANDPARENT] */
-    JsonItem *grandParent(parent->parent_); {
+    JsonItem* grandParent(parent->parent_);
+    if (grandParent &&
+        grandParent->type_ == QJsonValue::Array) {
 
-        if (grandParent &&
-            grandParent->type_ == QJsonValue::Array) {
-
-            item = grandParent;
-        }
+        item = grandParent;
     }
 
     update(document_, get_Path(item), QJsonValue(item->jsonValue()));
-
     emit dataChanged(_index, _index);
 
     return true;
@@ -124,17 +111,15 @@ bool JsonModel::setData(const QModelIndex &_index, const QVariant &_value, int _
 QVariant JsonModel::headerData(int _section, Qt::Orientation _orientation, int _role) const {
 
     if (_orientation == Qt::Horizontal && _role == Qt::DisplayRole) {
-
         return headerList_.value(_section);
     }
 
     return QVariant();
 }
 
-Qt::ItemFlags JsonModel::flags(const QModelIndex &_index) const {
+Qt::ItemFlags JsonModel::flags(const QModelIndex& _index) const {
 
     if (_index.isValid()) {
-
         return Qt::ItemIsEditable | QAbstractItemModel::flags(_index);
     }
 
@@ -145,35 +130,31 @@ Qt::ItemFlags JsonModel::flags(const QModelIndex &_index) const {
 /* NAVIGATION AND INDEX CREATION
 ----------------------------------------------------------------- */
 
-QModelIndex JsonModel::index(int _row, int _column, const QModelIndex &_parent) const {
+QModelIndex JsonModel::index(int _row, int _column, const QModelIndex& _parent) const {
 
     if (hasIndex(_row, _column, _parent)) {
 
-        JsonItem *parent(_parent.isValid()
+        JsonItem* parent(_parent.isValid()
                          ? static_cast<JsonItem*>(_parent.internalPointer())
                          : rootItem_);
 
-        JsonItem *child(parent->child(_row)); {
-
-            if (child) {
-
-                return createIndex(_row, _column, child);
-            }
+        JsonItem* child(parent->child(_row));
+        if (child) {
+            return createIndex(_row, _column, child);
         }
     }
 
     return QModelIndex();
 }
 
-QModelIndex JsonModel::parent(const QModelIndex &_index) const {
+QModelIndex JsonModel::parent(const QModelIndex& _index) const {
 
     if (_index.isValid()) {
 
-        JsonItem *child(static_cast<JsonItem*>(_index.internalPointer()));
-        JsonItem *parent(child->parent_);
+        JsonItem* child(static_cast<JsonItem*>(_index.internalPointer()));
+        JsonItem* parent(child->parent_);
 
         if (parent != rootItem_) {
-
             return createIndex(parent->row(), Column::Key, parent);
         }
     }
@@ -181,19 +162,18 @@ QModelIndex JsonModel::parent(const QModelIndex &_index) const {
     return QModelIndex();
 }
 
-int JsonModel::rowCount(const QModelIndex &_parent) const {
+int JsonModel::rowCount(const QModelIndex& _parent) const {
 
-    JsonItem *parent(_parent.isValid()
+    JsonItem* parent(_parent.isValid()
                      ? static_cast<JsonItem*>(_parent.internalPointer())
                      : rootItem_);
 
     return parent->childCount();
 }
 
-int JsonModel::columnCount(const QModelIndex &_parent) const {
+int JsonModel::columnCount(const QModelIndex& _parent) const {
 
     Q_UNUSED(_parent);
-
     return headerList_.size();
 }
 
@@ -201,16 +181,14 @@ int JsonModel::columnCount(const QModelIndex &_parent) const {
 /* SETUP
 ----------------------------------------------------------------- */
 
-bool JsonModel::loadJson(const QByteArray &_json) {
+bool JsonModel::loadJson(const QByteArray& _json) {
 
     document_ = QJsonDocument::fromJson(_json);
 
     if (document_.isNull()) {
-
         return false;
     }
     else {
-
         beginResetModel();
 
         rootItem_ = document_.isArray()
@@ -225,14 +203,12 @@ bool JsonModel::loadJson(const QByteArray &_json) {
 
 /* --------------------------------------------------------- [PRIVATE] */
 
-bool JsonModel::load(const QString &_fileName) {
+bool JsonModel::load(const QString& _fileName) {
 
     QFile file(_fileName);
-
     bool success(false);
 
     if (file.open(QIODevice::ReadOnly)) {
-
         success = load(&file);
         file.close();
     }
@@ -240,87 +216,71 @@ bool JsonModel::load(const QString &_fileName) {
     return success;
 }
 
-void JsonModel::update(QJsonDocument &_document, const QString &_path, const QJsonValue &_value) {
+void JsonModel::update(QJsonDocument& _document, const QString& _path, const QJsonValue& _value) {
 
-    QJsonObject object(_document.object()); {
-
-        update(object, _path, _value);
-    }
+    QJsonObject object(_document.object());
+    update(object, _path, _value);
 
     _document = QJsonDocument(object);
 }
 
-void JsonModel::update(QJsonObject &_object, const QString &_path, const QJsonValue &_value) {
+void JsonModel::update(QJsonObject& _object, const QString& _path, const QJsonValue& _value) {
 
     const int indexOfDot(_path.indexOf('.'));
-
     const QString key(_path.left(indexOfDot));
-
     const QString subPath((indexOfDot > 0)
                           ? _path.mid(indexOfDot + 1)
                           : QString());
 
-    QJsonValue subValue(_object [key]); {
+    QJsonValue subValue(_object[key]);
+    if (subPath.isEmpty()) {
+        subValue = _value;
+    }
 
-        if (subPath.isEmpty()) {
+    else {
 
-            subValue = _value;
+        if (subValue.type() == QJsonValue::Object) {
+            QJsonObject object(subValue.toObject());
+            update(object, subPath, _value);
+            subValue = object;
         }
 
         else {
-
-            if (subValue.type() == QJsonValue::Object) {
-
-                QJsonObject object(subValue.toObject()); {
-
-                    update(object, subPath, _value);
-                    subValue = object;
-                }
-            }
-
-            else {
-
-                subValue = _value;
-            }
+            subValue = _value;
         }
     }
 
-    _object [key] = subValue;
+    _object[key] = subValue;
 }
 
-JsonItem* JsonModel::get_Item(const QModelIndex &_index) const {
+JsonItem* JsonModel::get_Item(const QModelIndex& _index) const {
 
-    JsonItem *item(_index.isValid()
+    JsonItem* item(_index.isValid()
                    ? static_cast<JsonItem*>(_index.internalPointer())
                    : rootItem_);
     return item;
 }
 
-QString JsonModel::get_Path(JsonItem *_item) {
+QString JsonModel::get_Path(JsonItem* _item) {
 
     if (!_item) {
-
         return QString();
     }
 
-    QString path(_item->key_ + "." + _item->toString()); {
+    QString path(_item->key_ + "." + _item->toString());
+    _item = _item->parent_;
+
+    while (_item != rootItem_) {
+
+        if (_item) {
+            path.prepend(QString(_item->key_ + "."));
+        }
+
+        else {
+            break;
+        }
 
         _item = _item->parent_;
-
-        while (_item != rootItem_) {
-
-            if (_item) {
-
-                path.prepend(QString(_item->key_ + "."));
-            }
-
-            else {
-
-                break;
-            }
-
-            _item = _item->parent_;
-        }
     }
 
     return path;

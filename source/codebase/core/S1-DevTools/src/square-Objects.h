@@ -22,7 +22,6 @@ class S1_DEVTOOLS_EXPORT Objects {
 public:
 
     enum StandardSize {
-
         ICON_TOOLBUTTON = 0,
         ICON_TABLECELL = 1,
         TOOLBAR_SPACER,
@@ -65,7 +64,7 @@ public:
     /* --------------------------------------------------------------- [ITEMS] */
 
     static
-        QListWidgetItem* listWidgetItem(const QPixmap &pixmap);
+        QListWidgetItem* listWidgetItem(const QPixmap& pixmap);
 
     /* --------------------------------------------------------------- [FRAME/LAYOUT] */
 
@@ -76,19 +75,19 @@ public:
         QWidget* containerV();
 
     /* --------------------------------------------------------------- [TABLES] */
-        
+
     static
         QTableWidget* tableWidget(QStringList columnNameList);
 
     static
-        void insert_TableRow(QTableWidget &table, 
-                             int rowNum, 
-                             QStringList &rowItems);
+        void insert_TableRow(QTableWidget& table,
+                             int rowNum,
+                             QStringList& rowItems);
 
 
     static  /* Resize a table based on how many columns and rows you want to display */
-        void resize_Table(QTableWidget &table, 
-                          int rows, 
+        void resize_Table(QTableWidget& table,
+                          int rows,
                           int columns);
 
 

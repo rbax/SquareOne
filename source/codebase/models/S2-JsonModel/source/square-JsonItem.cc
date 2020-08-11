@@ -9,56 +9,47 @@ int JsonItem::row() const {
         : 0;
 }
 
-JsonItem* JsonItem::load(const QJsonValue& _value, JsonItem *_parent) {
+JsonItem* JsonItem::load(const QJsonValue& _value, JsonItem* _parent) {
 
-    JsonItem* rootItem(new JsonItem(_parent)); {
-
-        rootItem->key_ = "root";
-    }
+    JsonItem* rootItem(new JsonItem(_parent));
+    rootItem->key_ = "root";
 
     switch (_value.type()) {
 
         /* ------------------------------------------------ (Array) */
-        case QJsonValue::Array: {
-
+        case QJsonValue::Array:
+        {
             int index(0);
-
             foreach(QJsonValue value, _value.toArray()) {
 
                 // @todo: must check to see if the array is full of values or value pairs
 
                 if (value.isObject()) {
 
-                    JsonItem *child(load(value, rootItem)); {
-                        
-                        child->key_ = QString::number(index);
-                        child->type_ = value.type();
-                    }
+                    JsonItem* child(load(value, rootItem));
+                    child->key_ = QString::number(index);
+                    child->type_ = value.type();
 
                     rootItem->appendChild(child);
                     ++index;
                 }
                 else {
-
                     rootItem->values_.append(value.toVariant().toString());
                 }
-
             }
 
             break;
         }
         /* ------------------------------------------------ (Object) */
-        case QJsonValue::Object: {
-
+        case QJsonValue::Object:
+        {
             foreach(QString key, _value.toObject().keys()) {
 
                 QJsonValue value(_value.toObject().value(key));
 
-                JsonItem *child(load(value, rootItem)); {
-
-                    child->key_ = key;
-                    child->type_ = value.type();
-                }
+                JsonItem* child(load(value, rootItem));
+                child->key_ = key;
+                child->type_ = value.type();
 
                 rootItem->appendChild(child);
             }
@@ -67,11 +58,10 @@ JsonItem* JsonItem::load(const QJsonValue& _value, JsonItem *_parent) {
         }
 
         /* ------------------------------------------------ (default) */
-        default: {
-
+        default:
+        {
             rootItem->appendValue(_value.toVariant().toString());
             rootItem->type_ = _value.type();
-
             break;
         }
     }
@@ -84,12 +74,10 @@ QJsonValue JsonItem::jsonValue() {
     switch (type_) {
 
         /* ------------------------------------------------ (Object) */
-        case QJsonValue::Object: {
-
+        case QJsonValue::Object:
+        {
             QJsonObject jObject;
-
             FOR_I(childCount()) {
-
                 jObject.insert(child(i)->key_,
                                child(i)->jsonValue());
             }
@@ -98,12 +86,11 @@ QJsonValue JsonItem::jsonValue() {
         }
 
         /* ------------------------------------------------ (Array) */
-        case QJsonValue::Array: {
-
+        case QJsonValue::Array:
+        {
             QJsonArray jArray;
 
             FOR_I(values_.size()) {
-
                 jArray.append(QJsonValue(values_.at(i)));
             }
 
@@ -117,19 +104,18 @@ QJsonValue JsonItem::jsonValue() {
 QString JsonItem::toString() {
 
     QString str("");
-
     switch (type_) {
 
         /* ------------------------------------------------ (Null) */
-        case QJsonValue::Null: {
-
+        case QJsonValue::Null:
+        {
             str = "NULL";
             break;
         }
 
         /* ------------------------------------------------ (Object) */
-        case QJsonValue::Object: {
-
+        case QJsonValue::Object:
+        {
             QStringList tempList;
 
             FOR_I(childCount()) {
@@ -147,15 +133,15 @@ QString JsonItem::toString() {
         }
 
         /* ------------------------------------------------ (Array) */
-        case QJsonValue::Array: {
-
+        case QJsonValue::Array:
+        {
             str = values_.join(", ");
-
             break;
         }
 
         /* ------------------------------------------------ (default) */
-        default: {
+        default:
+        {
             str = value();
             break;
         }
@@ -167,16 +153,12 @@ QString JsonItem::toString() {
 QString JsonItem::toString(int _column) {
 
     if (type_ == QJsonValue::Object) {
-
         if (_column <= childCount()) {
-
             return child(_column - 1)->toString();
         }
     }
-
     else if (_column <= values_.size()) {
-
-        return values_.at(_column-1);
+        return values_.at(_column - 1);
     }
 
     return QString();
@@ -195,9 +177,8 @@ QString JsonItem::value(int _itemNum) {
 void JsonItem::updateValue(QString _value, int _pos) {
 
     if (values_.size() > _pos) {
-
         if (_value == "") values_.removeAt(_pos);
-        else values_ [_pos] = _value;
+        else values_[_pos] = _value;
     }
     else appendValue(_value);
 }

@@ -10,7 +10,7 @@
 
 const qreal Pi(3.14);
 
-GraphEdge::GraphEdge(GraphVertex *_startItem, GraphVertex *_endItem, QGraphicsItem *_parent) 
+GraphEdge::GraphEdge(GraphVertex* _startItem, GraphVertex* _endItem, QGraphicsItem* _parent)
     : QGraphicsLineItem(_parent), startItem_(_startItem), endItem_(_endItem), NodeInterface(NodeInterface::EDGE) {
 
     setFlag(QGraphicsItem::ItemIsSelectable, true);
@@ -19,9 +19,9 @@ GraphEdge::GraphEdge(GraphVertex *_startItem, GraphVertex *_endItem, QGraphicsIt
 
 QRectF GraphEdge::boundingRect() const {
 
-    qreal extra((pen().width() + 20) / 2.0); 
+    qreal extra((pen().width() + 20) / 2.0);
 
-    return QRectF(line().p1(), 
+    return QRectF(line().p1(),
                   QSizeF(line().p2().x() - line().p1().x(),
                   line().p2().y() - line().p1().y()))
         .normalized()
@@ -30,10 +30,8 @@ QRectF GraphEdge::boundingRect() const {
 
 QPainterPath GraphEdge::shape() const {
 
-    QPainterPath path(QGraphicsLineItem::shape()); {
-
-        path.addPolygon(endEdge_);
-    }
+    QPainterPath path(QGraphicsLineItem::shape());
+    path.addPolygon(endEdge_);
 
     return path;
 }
@@ -45,20 +43,17 @@ void GraphEdge::updatePosition() {
         mapFromItem(endItem_, 0, 0)));
 }
 
-void GraphEdge::paint(QPainter *_painter, const QStyleOptionGraphicsItem *, QWidget *) {
+void GraphEdge::paint(QPainter* _painter, const QStyleOptionGraphicsItem*, QWidget*) {
 
     if (startItem_->collidesWithItem(endItem_)) {
-
         return;
     }
 
-    QPen pen(pen()); {
+    QPen pen(pen());
+    pen.setColor(item()->fillColor);
 
-        pen.setColor(item()->fillColor);
-    }
-  
-    qreal arrowSize(20); 
-      
+    qreal arrowSize(20);
+
     _painter->setPen(pen);
     _painter->setBrush(item()->fillColor);
 
@@ -78,7 +73,6 @@ void GraphEdge::paint(QPainter *_painter, const QStyleOptionGraphicsItem *, QWid
         QLineF::IntersectType intersectType(polyLine.intersect(centerLine, &intersectPoint));
 
         if (intersectType == QLineF::BoundedIntersection) {
-
             break;
         }
 
@@ -88,22 +82,21 @@ void GraphEdge::paint(QPainter *_painter, const QStyleOptionGraphicsItem *, QWid
     setLine(QLineF(intersectPoint, startItem_->pos()));
 
     double angle(::acos(line().dx() / line().length()));
-    
-    if (line().dy() >= 0) {
 
+    if (line().dy() >= 0) {
         angle = (Pi * 2) - angle;
     }
 
     QPointF arrowP1(line().p1() + QPointF(sin(angle + Pi / 3) * arrowSize,
-                                            cos(angle + Pi / 3) * arrowSize));
+                    cos(angle + Pi / 3) * arrowSize));
 
     QPointF arrowP2(line().p1() + QPointF(sin(angle + Pi - Pi / 3) * arrowSize,
-                                            cos(angle + Pi - Pi / 3) * arrowSize));
+                    cos(angle + Pi - Pi / 3) * arrowSize));
 
     endEdge_.clear();
-    endEdge_ 
-        << line().p1() 
-        << arrowP1 
+    endEdge_
+        << line().p1()
+        << arrowP1
         << arrowP2;
 
     _painter->drawLine(line());
@@ -113,13 +106,11 @@ void GraphEdge::paint(QPainter *_painter, const QStyleOptionGraphicsItem *, QWid
 
         _painter->setPen(QPen(item()->fillColor, 1, Qt::DashLine));
 
-        QLineF line(line()); {
+        QLineF line(line());
+        line.translate(0, 4.0);
+        _painter->drawLine(line);
 
-            line.translate(0, 4.0);
-            _painter->drawLine(line);
-
-            line.translate(0, -8.0);
-            _painter->drawLine(line);
-        }
+        line.translate(0, -8.0);
+        _painter->drawLine(line);
     }
 }

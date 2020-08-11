@@ -20,8 +20,8 @@ struct S2_GRAPHMODEL_EXPORT GraphItem {
     qreal penWidth = 1;
     QRectF rect = QRectF(-100 - penWidth / 20,
                          -100 - penWidth / 20,
-                          200 + penWidth,
-                          200 + penWidth);
+                         200 + penWidth,
+                         200 + penWidth);
 };
 
 Q_DECLARE_METATYPE(GraphItem)

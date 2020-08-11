@@ -10,8 +10,6 @@
 class GraphModel;
 
 
-
-
 class S2_GRAPHMODEL_EXPORT GraphModelPrivate : public QObject {
 
     Q_OBJECT
@@ -20,19 +18,14 @@ class S2_GRAPHMODEL_EXPORT GraphModelPrivate : public QObject {
 
 public: /* ---------------------------------------------------------- [PUBLIC] */
 
-    GraphModelPrivate(GraphModel *q);
+    GraphModelPrivate(GraphModel* q);
 
     /* ------------------------------------------ (ACTIONS) */
-
-
 
     /* ------------------------------------------ (OBJECTS) */
 
 
-
-
-
 private: /* --------------------------------------------------------- [PRIVATE] */
 
-    GraphModel *q_ptr_;
+    GraphModel* q_ptr_;
 };

@@ -1,7 +1,6 @@
 #include "square-GraphItem.h"
 
 
-
 //QRectF GraphItem::resizeHandle() const {
 //
 //    QPointF br(boundRect_.bottomRight());

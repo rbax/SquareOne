@@ -1,7 +1,7 @@
 
 #include "square-GraphItemSet.h"
 
-QString ItemSet::uniqueName(const QString &_name) const {
+QString ItemSet::uniqueName(const QString& _name) const {
 
     QString unique;
 
@@ -17,7 +17,7 @@ QString ItemSet::uniqueName(const QString &_name) const {
 }
 
 
-bool ItemSet::load(QTextStream &stream) {
+bool ItemSet::load(QTextStream& stream) {
 
     /* shapeList_.clear();
 
@@ -54,7 +54,7 @@ bool ItemSet::load(QTextStream &stream) {
     return true;
 }
 
-void ItemSet::save(QTextStream &stream) {
+void ItemSet::save(QTextStream& stream) {
 
     //for (int i = 0; i < shapeList_.count(); ++i) {
 
@@ -85,6 +85,6 @@ QString ItemSet::fileName() const {
     return fileName_;
 }
 
-void ItemSet::setFileName(const QString &fileName) {
+void ItemSet::setFileName(const QString& fileName) {
     fileName_ = fileName;
 }

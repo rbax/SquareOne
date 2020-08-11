@@ -16,7 +16,7 @@
 
 /* ------------------------------------------------------------------ [PUBLIC] */
 
-DragWidget::DragWidget(QSize _imageSize, QWidget *_parent)
+DragWidget::DragWidget(QSize _imageSize, QWidget* _parent)
     :
     QWidget(_parent),
     imageSize_(_imageSize.width() * 10),
@@ -36,14 +36,13 @@ void DragWidget::clear() {
 
 /* ------------------------------------------------------------------ [PROTECTED] */
 
-void DragWidget::mousePressEvent(QMouseEvent *event) {
+void DragWidget::mousePressEvent(QMouseEvent* event) {
 
     QRect square(targetSquare(event->pos()));
 
-    DragItem *item;
+    DragItem* item;
 
     if (event->button() == Qt::RightButton) {
-
         item = get_DragItem(square);
         if (!item) return;
 
@@ -51,44 +50,32 @@ void DragWidget::mousePressEvent(QMouseEvent *event) {
     }
 
     else {
-
-        item = take_DragItem(square); {
-
-            if (!item) return;
-        }
+        item = take_DragItem(square);
+        if (!item) return;
 
         update(square);
 
         QPixmap pixmap(item->pixmap);
-
         QByteArray itemData;
 
-        QDataStream dataStream(&itemData, QIODevice::WriteOnly); {
+        QDataStream dataStream(&itemData, QIODevice::WriteOnly);
+        dataStream << pixmap << item->typeID;
 
-            dataStream << pixmap << item->typeID;
-        }
+        QMimeData* mimeData(new QMimeData);
+        mimeData->setData(mimeString_, itemData);
 
-        QMimeData *mimeData(new QMimeData); {
-
-            mimeData->setData(mimeString_, itemData);
-        }
-
-        QDrag *drag(new QDrag(this)); {
-
-            drag->setMimeData(mimeData);
-            drag->setHotSpot(event->pos() - square.topLeft());
-            drag->setPixmap(pixmap);
-        }
-
+        QDrag* drag(new QDrag(this));
+        drag->setMimeData(mimeData);
+        drag->setHotSpot(event->pos() - square.topLeft());
+        drag->setPixmap(pixmap);
         if (!(drag->exec(Qt::MoveAction) == Qt::MoveAction)) {
-
             dragItemHash_.insert(square, item);
             update(targetSquare(event->pos()));
         }
     }
 }
 
-void DragWidget::dragMoveEvent(QDragMoveEvent *event) {
+void DragWidget::dragMoveEvent(QDragMoveEvent* event) {
 
     QRect updateRect(highlightRectangle_.united(targetSquare(event->pos())));
 
@@ -101,7 +88,6 @@ void DragWidget::dragMoveEvent(QDragMoveEvent *event) {
     }
 
     else {
-
         highlightRectangle_ = QRect();
         event->ignore();
     }
@@ -109,25 +95,22 @@ void DragWidget::dragMoveEvent(QDragMoveEvent *event) {
     update(updateRect);
 }
 
-void DragWidget::dragLeaveEvent(QDragLeaveEvent *event) {
+void DragWidget::dragLeaveEvent(QDragLeaveEvent* event) {
 
-    QRect updateRect(highlightRectangle_); {
-
-        highlightRectangle_ = QRect();
-    }
+    QRect updateRect(highlightRectangle_);
+    highlightRectangle_ = QRect();
 
     update(updateRect);
     event->accept();
 }
 
-void DragWidget::dragEnterEvent(QDragEnterEvent *event) {
+void DragWidget::dragEnterEvent(QDragEnterEvent* event) {
 
     if (event->mimeData()->hasFormat(mimeString_)) event->accept();
-
     else event->ignore();
 }
 
-void DragWidget::dropEvent(QDropEvent *event) {
+void DragWidget::dropEvent(QDropEvent* event) {
 
     if (event->mimeData()->hasFormat(mimeString_)
         && findItem(targetSquare(event->pos())) == -1) {
@@ -136,59 +119,45 @@ void DragWidget::dropEvent(QDropEvent *event) {
         QPixmap pixmap;
         int itemID;
 
-        QDataStream dataStream(&data, QIODevice::ReadOnly); {
-
-            dataStream >> pixmap >> itemID;
-        }
+        QDataStream dataStream(&data, QIODevice::ReadOnly);
+        dataStream >> pixmap >> itemID;
 
         highlightRectangle_ = QRect();
 
-        QRect square(targetSquare(event->pos())); {
-
-            update(square);
-            event->setDropAction(Qt::MoveAction);
-            event->accept();
-        }
+        QRect square(targetSquare(event->pos()));
+        update(square);
+        event->setDropAction(Qt::MoveAction);
+        event->accept();
 
         if (selectedItem_) {
-
             selectedItem_->rect = square;
             dragItemHash_.insert(square, selectedItem_);
             selectedItem_ = 0;
         }
-
         else {
-
-            DragItem *item(new DragItem()); {
-
-                item->id = itemCount_;
-                item->pixmap = pixmap;
-                item->rect = square;
-                item->typeID = itemID;
-            }
+            DragItem* item(new DragItem());
+            item->id = itemCount_;
+            item->pixmap = pixmap;
+            item->rect = square;
+            item->typeID = itemID;
 
             dragItemHash_.insert(square, item);
             itemCount_++;
         }
     }
-
     else {
-
         highlightRectangle_ = QRect();
         event->ignore();
     }
 }
 
-void DragWidget::paintEvent(QPaintEvent *event) {
+void DragWidget::paintEvent(QPaintEvent* event) {
 
-    QPainter painter; {
-
-        painter.begin(this);
-        painter.fillRect(event->rect(), Qt::white);
-    }
+    QPainter painter;
+    painter.begin(this);
+    painter.fillRect(event->rect(), Qt::white);
 
     if (highlightRectangle_.isValid()) {
-
         painter.setBrush(QColor("#42c0fb")); /* blue */
         painter.setPen(Qt::NoPen);
         painter.drawRect(highlightRectangle_.adjusted(0, 0, -1, -1));
@@ -197,7 +166,6 @@ void DragWidget::paintEvent(QPaintEvent *event) {
     QHashIterator<QRect, DragItem*> i(dragItemHash_);
 
     while (i.hasNext()) {
-
         i.next();
         painter.drawPixmap(i.value()->rect, i.value()->pixmap);
     }
@@ -212,28 +180,28 @@ int DragWidget::itemSize() const { //@TODO this is dumb
     return imageSize_ / 5;
 }
 
-int DragWidget::findItem(const QRect &_itemRect) const {
+int DragWidget::findItem(const QRect& _itemRect) const {
 
     return dragItemHash_.contains(_itemRect)
         ? 0
         : -1;
 }
 
-DragItem* DragWidget::take_DragItem(const QRect &_itemRect) {
+DragItem* DragWidget::take_DragItem(const QRect& _itemRect) {
 
     return selectedItem_ = dragItemHash_.contains(_itemRect)
         ? dragItemHash_.take(_itemRect)
         : 0;
 }
 
-DragItem* DragWidget::get_DragItem(const QRect &_itemRect) {
+DragItem* DragWidget::get_DragItem(const QRect& _itemRect) {
 
     return dragItemHash_.contains(_itemRect)
         ? dragItemHash_.value(_itemRect)
         : 0;
 }
 
-const QRect DragWidget::targetSquare(const QPoint &_position) const {
+const QRect DragWidget::targetSquare(const QPoint& _position) const {
 
     return QRect(_position.x() / itemSize() * itemSize(),
                  _position.y() / itemSize() * itemSize(),

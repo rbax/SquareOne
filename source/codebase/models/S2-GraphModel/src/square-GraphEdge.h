@@ -1,11 +1,13 @@
 #pragma once
 
+/* |INCLUDES: QT| */
 #include <QGraphicsLineItem>
 
 class QRectF;
 class QPainterPath;
 class GraphVertex;
 
+/* |INCLUDES: SQUARE| */
 #include "square-GraphNode.h"
 #include "S2-GraphModel_Export.h"
 
@@ -15,22 +17,22 @@ class S2_GRAPHMODEL_EXPORT GraphEdge : public QGraphicsLineItem, public NodeInte
 
 public: /* ---------------------------------------------------------- [PUBLIC] */
 
-	enum { Type = UserType + IType::EDGE };
+    enum { Type = UserType + IType::EDGE };
 
-    GraphEdge(GraphVertex *startItem, GraphVertex *endItem, QGraphicsItem *parent = 0);
+    GraphEdge(GraphVertex* startItem, GraphVertex* endItem, QGraphicsItem* parent = 0);
 
-	int type() const Q_DECL_OVERRIDE { return Type; }
+    int type() const Q_DECL_OVERRIDE { return Type; }
 
     QRectF boundingRect() const Q_DECL_OVERRIDE;
     QPainterPath shape() const Q_DECL_OVERRIDE;
     void updatePosition();
 
-    GraphVertex *startItem_;
-    GraphVertex *endItem_;
+    GraphVertex* startItem_;
+    GraphVertex* endItem_;
 
 protected: /* ------------------------------------------------------- [PROTECTED] */
 
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0) Q_DECL_OVERRIDE;
+    void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget = 0) Q_DECL_OVERRIDE;
 
 private: /* --------------------------------------------------------- [PRIVATE] */
 

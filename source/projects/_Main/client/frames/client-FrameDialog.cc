@@ -4,7 +4,6 @@
 #include <QStackedWidget>
 #include <QProcess>
 
-
 /* |INCLUDES: SQUARE| */
 #include "square.h"
 #include "square-Menu.h"
@@ -13,38 +12,32 @@
 #include "square-JsonFrame.h"
 #include "square-GraphFrame.h"
 
-
 /* |INCLUDES: PROJECT| */
 #include "client-FrameDialog.h"
 #include "client-DragFrame.h"
 
 
-FrameDialog::FrameDialog(QWidget *parent) : QDialog(parent) {
+FrameDialog::FrameDialog(QWidget* parent): QDialog(parent) {
 
     QSize buttonSize(50, 50);
 
-    /* ---------------------------------------------------- (MENU FRAMES) */
+    // ---------------------------------------------------- MENU FRAMES
 
-    Menu *squareMenu(new Menu(false)); {
-        squareMenu->register_Frame(new ClientDragFrame(), SQUARE_OBJ::button("DragFrame", buttonSize));
-        squareMenu->register_Frame(new JsonFrame(), SQUARE_OBJ::button("JsonFrame", buttonSize));
-        squareMenu->register_Frame(new GraphFrame(), SQUARE_OBJ::button("Graph", buttonSize));
-        squareMenu->register_Frame(new TableFrame(QStringList() << "1" << "2"), SQUARE_OBJ::button("TableFrame", buttonSize));
-        squareMenu->set_Frame(0);
-    }
+    Menu* squareMenu(new Menu(false));
+    squareMenu->register_Frame(new ClientDragFrame(), SQUARE_OBJ::button("DragFrame", buttonSize));
+    squareMenu->register_Frame(new JsonFrame(), SQUARE_OBJ::button("JsonFrame", buttonSize));
+    squareMenu->register_Frame(new GraphFrame(), SQUARE_OBJ::button("Graph", buttonSize));
+    squareMenu->register_Frame(new TableFrame(QStringList() << "1" << "2"), SQUARE_OBJ::button("TableFrame", buttonSize));
+    squareMenu->set_Frame(0);
 
-    /* ---------------------------------------------------- (MENU TOOLBAR) */
+    // ---------------------------------------------------- MENU TOOLBAR
 
-    QToolBar *toolbar(squareMenu->get_ToolBar()); {
+    QToolBar* toolbar(squareMenu->get_ToolBar());
+    toolbar->setOrientation(Qt::Vertical);
 
-        toolbar->setOrientation(Qt::Vertical);
-    }
+    // ---------------------------------------------------- MAIN LAYOUT
 
-    /* ---------------------------------------------------- (MAIN LAYOUT) */
-
-    QHBoxLayout *mainLayout(new QHBoxLayout(this)); {
-
-        mainLayout->addWidget(toolbar);
-        mainLayout->addWidget(squareMenu->get_StackedWidget());
-    }
+    QHBoxLayout* mainLayout(new QHBoxLayout(this));
+    mainLayout->addWidget(toolbar);
+    mainLayout->addWidget(squareMenu->get_StackedWidget());
 }

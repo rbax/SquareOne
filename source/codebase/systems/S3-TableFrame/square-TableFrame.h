@@ -16,10 +16,10 @@ class S3_TABLEFRAME_EXPORT TableFrame : public FrameInterface {
 
 public: /* ---------------------------------------------------------- [PUBLIC] */
 
-    TableFrame(const QStringList &columnNameList);
+    TableFrame(const QStringList& columnNameList);
 
 
 private: /* --------------------------------------------------------- [PRIVATE] */
 
-    TableFramePrivate *z_ptr_;
+    TableFramePrivate* z_ptr_;
 };

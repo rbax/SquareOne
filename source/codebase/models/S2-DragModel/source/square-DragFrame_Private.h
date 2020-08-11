@@ -19,11 +19,11 @@ class S2_DRAGMODEL_EXPORT DragFramePrivate {
 
 public: /* ---------------------------------------------------------- [PUBLIC] */
 
-    DragFramePrivate(DragFrame *q);
+    DragFramePrivate(DragFrame* q);
 
-    void insert_Items(QToolButton *button, const QStringList &imagePathList);
+    void insert_Items(QToolButton* button, const QStringList& imagePathList);
 
-    void insert_Items(QToolButton *button, const QList<DragItem*> &dragItemList);
+    void insert_Items(QToolButton* button, const QList<DragItem*>& dragItemList);
 
     QSize itemSize_;
 
@@ -32,13 +32,13 @@ public: /* ---------------------------------------------------------- [PUBLIC] *
     Menu itemMenu_;
     Menu slideMenu_;
 
-    QSplitter *splitter_;
+    QSplitter* splitter_;
 
 private: /* --------------------------------------------------------- [PRIVATE] */
 
-    DragFrame *q_ptr_;
+    DragFrame* q_ptr_;
 
-    DragWidget *dragCanvas_;
+    DragWidget* dragCanvas_;
     QList<DragItem*> dragItemList_;
 
 };

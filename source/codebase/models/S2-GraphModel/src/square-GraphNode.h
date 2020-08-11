@@ -8,7 +8,7 @@
 struct GraphItem;
 struct GraphData;
 
-class S2_GRAPHMODEL_EXPORT NodeInterface  {
+class S2_GRAPHMODEL_EXPORT NodeInterface {
 
 public: /* ---------------------------------------------------------- [PUBLIC] */
 
@@ -19,25 +19,25 @@ public: /* ---------------------------------------------------------- [PUBLIC] *
     virtual ~NodeInterface() {}
 
     virtual int itemID() const { return itemID_; }
-    virtual IType itype() const { return type_;  }
+    virtual IType itype() const { return type_; }
 
     virtual GraphItem* item() const { return item_; }
     virtual GraphData* data() const { return data_; }
 
     virtual QString name() const { return name_; }
-    virtual void setName(QString &name) { name_ = name; }
+    virtual void setName(QString& name) { name_ = name; }
 
 signals: /* --------------------------------------------------------- [SIGNALS] */
 
     void signal_Selected(int itemID);
 
 protected: /* ------------------------------------------------------- [PROTECTED] */
-    
+
     const QSize minSize() const { return QSize(80, 50); }
     const int handleSize() const { return 6; }
 
-    static QGradient gradient(QColor &_color, QRectF &_rect);
-    static QPolygon triangle(QRectF &_rect);
+    static QGradient gradient(QColor& _color, QRectF& _rect);
+    static QPolygon triangle(QRectF& _rect);
 
 private: /* --------------------------------------------------------- [PRIVATE] */
 
@@ -45,8 +45,8 @@ private: /* --------------------------------------------------------- [PRIVATE] 
     QString name_ = "";
     IType type_;
 
-    GraphItem *item_ = 0;
-    GraphData *data_ = 0;
+    GraphItem* item_ = 0;
+    GraphData* data_ = 0;
 };
 
 /* Interface Macro */

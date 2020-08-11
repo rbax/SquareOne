@@ -20,11 +20,11 @@ class S2_DRAGMODEL_EXPORT DragWidget : public QWidget {
 
 public: /* ---------------------------------------------------------- [PUBLIC] */
 
-    explicit DragWidget(QSize imageSize, QWidget *parent = 0);
+    explicit DragWidget(QSize imageSize, QWidget* parent = 0);
 
     void clear();
 
-    DragItem* get_DragItem(const QRect &itemRect);
+    DragItem* get_DragItem(const QRect& itemRect);
 
 
 signals: /* --------------------------------------------------------- [SIGNALS] */
@@ -33,25 +33,25 @@ signals: /* --------------------------------------------------------- [SIGNALS] 
 
 protected: /* ------------------------------------------------------- [PROTECTED] */
 
-    void dragMoveEvent(QDragMoveEvent *event) Q_DECL_OVERRIDE;
-    void dragLeaveEvent(QDragLeaveEvent *event) Q_DECL_OVERRIDE;
-    void dragEnterEvent(QDragEnterEvent *event) Q_DECL_OVERRIDE;
-    void dropEvent(QDropEvent *event) Q_DECL_OVERRIDE;
+    void dragMoveEvent(QDragMoveEvent* event) Q_DECL_OVERRIDE;
+    void dragLeaveEvent(QDragLeaveEvent* event) Q_DECL_OVERRIDE;
+    void dragEnterEvent(QDragEnterEvent* event) Q_DECL_OVERRIDE;
+    void dropEvent(QDropEvent* event) Q_DECL_OVERRIDE;
 
-    void mousePressEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
+    void mousePressEvent(QMouseEvent* event) Q_DECL_OVERRIDE;
 
-    void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
+    void paintEvent(QPaintEvent* event) Q_DECL_OVERRIDE;
 
 private: /* --------------------------------------------------------- [PRIVATE] */
 
 
     int itemSize() const;
 
-    int findItem(const QRect &itemRectangle) const;
+    int findItem(const QRect& itemRectangle) const;
 
-    DragItem* take_DragItem(const QRect &itemRectangle);
+    DragItem* take_DragItem(const QRect& itemRectangle);
 
-    const QRect targetSquare(const QPoint &position) const;
+    const QRect targetSquare(const QPoint& position) const;
 
     /* --------------------------------------------------------------- [PRIVATE] */
 
@@ -71,7 +71,7 @@ private: /* --------------------------------------------------------- [PRIVATE] 
 
 /* ------------------------------------------------------------------ [INLINE] */
 
-inline uint qHash(const QRect & _r) {
+inline uint qHash(const QRect& _r) {
 
     return qHash(_r.left()) ^ qHash(_r.top()) ^
         qHash(_r.right()) ^ qHash(_r.bottom());

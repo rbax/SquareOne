@@ -15,13 +15,13 @@ public: /* ---------------------------------------------------------- [PUBLIC] *
 
 private: /* --------------------------------------------------------- [PRIVATE] */
 
-    QString uniqueName(const QString &name) const; // fix
-    
-    bool load(QTextStream &stream); // fix this
-    void save(QTextStream &stream); // fix this
+    QString uniqueName(const QString& name) const; // fix
+
+    bool load(QTextStream& stream); // fix this
+    void save(QTextStream& stream); // fix this
 
     QString fileName() const; // fix this
-    void setFileName(const QString &fileName); // fix this
+    void setFileName(const QString& fileName); // fix this
 
     QString fileName_; // inspect
 };

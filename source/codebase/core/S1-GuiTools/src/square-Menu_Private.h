@@ -18,9 +18,9 @@ class S1_GUITOOLS_EXPORT MenuPrivate : public QObject {
 
 public: /* ---------------------------------------------------------- [PUBLIC] */
 
-    MenuPrivate(Menu *q);
+    MenuPrivate(Menu* q);
 
-    int	register_Frame(FrameInterface *frame, QToolButton *button);
+    int	register_Frame(FrameInterface* frame, QToolButton* button);
 
     /* ------------------------------------- (SET) */
 
@@ -34,9 +34,9 @@ public: /* ---------------------------------------------------------- [PUBLIC] *
 
     /* ------------------------------------- (VARIABLES) */
 
-    QToolBar *toolbar_;
+    QToolBar* toolbar_;
 
-    QStackedWidget *stackedWidget_;
+    QStackedWidget* stackedWidget_;
 
     QList<QPair<FrameInterface*, QToolButton*>> framePairList_;
 
@@ -44,5 +44,5 @@ public: /* ---------------------------------------------------------- [PUBLIC] *
 
 private: /* --------------------------------------------------------- [PRIVATE] */
 
-    Menu *q_ptr_;
+    Menu* q_ptr_;
 };
