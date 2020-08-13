@@ -1,10 +1,7 @@
 #pragma once
 
-class GraphTextItem;
-
+// Includes: Qt
 #include <QGraphicsScene>
-#include "S2-GraphModel_Export.h"
-
 class QGraphicsSceneMouseEvent;
 class QMenu;
 class QPointF;
@@ -14,11 +11,16 @@ class QGraphicsTextItem;
 class QColor;
 class QAction;
 
+// Includes: Project
+#include "S2-GraphModel_Export.h"
+class GraphTextItem;
+
+
 class S2_GRAPHMODEL_EXPORT GraphScene : public QGraphicsScene {
 
     Q_OBJECT
 
-public: /* ---------------------------------------------------------- [PUBLIC] */
+public: // ---------------------------------------------------------- PUBLIC
 
     enum Mode { MOVE = 0, EDIT = 1, INSERT_VERTEX, INSERT_EDGE, INSERT_TEXT };
 
@@ -29,25 +31,25 @@ public: /* ---------------------------------------------------------- [PUBLIC] *
     void setItemColor(const QColor& color);
     void setFont(const QFont& font);
 
-public slots: /* ---------------------------------------------------- [PUBLIC SLOTS] */
+public slots: // ---------------------------------------------------- PUBLIC SLOTS
 
     void slot_LostFocusTextEditor(GraphTextItem* item);
     void slot_SetMode(Mode mode) { mode_ = mode; }
 
-signals: /* --------------------------------------------------------- [SIGNALS] */
+signals: // --------------------------------------------------------- SIGNALS
 
     void signal_ItemInserted();
     void signal_FocusTextEditer(QGraphicsItem* item);
     void signal_FocusItem(QGraphicsItem* item);
 
-protected: /* ------------------------------------------------------- [PROTECTED] */
+protected: // ------------------------------------------------------- PROTECTED
 
     void mousePressEvent(QGraphicsSceneMouseEvent* mouseEvent) Q_DECL_OVERRIDE;
     void mouseDoubleClickEvent(QGraphicsSceneMouseEvent* mouseEvent) Q_DECL_OVERRIDE;
     void mouseMoveEvent(QGraphicsSceneMouseEvent* mouseEvent) Q_DECL_OVERRIDE;
     void mouseReleaseEvent(QGraphicsSceneMouseEvent* mouseEvent) Q_DECL_OVERRIDE;
 
-private: /* --------------------------------------------------------- [PRIVATE] */
+private: // --------------------------------------------------------- PRIVATE
 
     bool isSelectedItemofType(int type);
 

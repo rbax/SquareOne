@@ -1,4 +1,4 @@
-/* |INCLUDES: QT| */
+ /* |INCLUDES: QT| */
 #include "qlayout.h"
 #include <Qsplitter>
 #include <QStackedWidget>
@@ -19,7 +19,7 @@
 #include "square-DragItem.h"
 
 
-/* ------------------------------------------------------------------ [DRAGFRAME] */
+// ------------------------------------------------------------------ PUBLIC | DRAGFRAME
 
 DragFrame::DragFrame(): FrameInterface(), z_ptr_(new DragFramePrivate(this)) {
 
@@ -66,7 +66,7 @@ DragItem* DragFrame::create_DragItem(const QString& _path) {
 }
 
 
-/* ------------------------------------------------------------------ [DRAGFRAME_PRIVATE] */
+// ------------------------------------------------------------------ PUBLIC | DRAGFRAME_PRIVATE
 
 DragFramePrivate::DragFramePrivate(DragFrame* q): q_ptr_(q),
 mimeString_("square/x-d2node-data"),

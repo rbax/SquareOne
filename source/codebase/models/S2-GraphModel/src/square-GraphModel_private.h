@@ -1,12 +1,11 @@
 #pragma once
 
-/* |INCLUDES: QT| */
+
+// Includes: Qt
 #include <QWidget>
 
-/* |INCLUDES: SQUARE| */
+// Includes: Project
 #include "S2-GraphModel_Export.h"
-
-/* |INCLUDES: PROJECT| */
 class GraphModel;
 
 
@@ -15,17 +14,12 @@ class S2_GRAPHMODEL_EXPORT GraphModelPrivate : public QObject {
     Q_OBJECT
 
 
-
-public: /* ---------------------------------------------------------- [PUBLIC] */
+public: // ---------------------------------------------------------- PUBLIC
 
     GraphModelPrivate(GraphModel* q);
 
-    /* ------------------------------------------ (ACTIONS) */
 
-    /* ------------------------------------------ (OBJECTS) */
-
-
-private: /* --------------------------------------------------------- [PRIVATE] */
+private: // --------------------------------------------------------- PRIVATE
 
     GraphModel* q_ptr_;
 };

@@ -1,23 +1,25 @@
 #pragma once
 
-/* |INCLUDES: QT| */
+// Includes: Qt
 class QTableWidget;
 class QStringList;
 class QSize;
 class QString;
 //class QFile;
 
-/*  |INCLUDES: PROJECT| */
+// Includes: Project
 #include "S1-DevTools_Export.h"
 #include "square-Macros.h"
 
+
 SQUARE_START
+
 
 class S1_DEVTOOLS_EXPORT IO {
 
-public:
+public: // ---------------------------------------------------------- PUBLIC
 
-    /* ---------------------------------------------------------- (PATH FUNCTIONS) */
+    // - - - - - PATH FUNCTIONS
 
     static
         void set_DeployPaths(const QString& path);
@@ -31,7 +33,7 @@ public:
     static
         QString get_DataPath(const QString& projectName);
 
-    /* ---------------------------------------------------------- (FILE FUNCIONS) */
+    // - - - - - FILE FUNCIONS
 
     static /* Return true if file .exists() && .isFile() */
         bool fileExists(const QString& fullFilePath);
@@ -52,5 +54,6 @@ public:
     //    void fill_TextEdit(const QString& filePath);
 
 };
+
 
 SQUARE_END

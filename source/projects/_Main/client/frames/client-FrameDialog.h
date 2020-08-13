@@ -1,9 +1,9 @@
 #pragma once
 
-/* |INCLUDES: QT| */
+// Includes: Qt
 #include <QDialog>
 
-/* |INCLUDES: PROJECT| */
+// Includes: Project
 #include "_client_Export.h"
 
 
@@ -12,11 +12,11 @@ class _CLIENT_EXPORT FrameDialog : public QDialog {
     Q_OBJECT
 
 
-public: /* ---------------------------------------------------------- [PUBLIC] */
+public: // ---------------------------------------------------------- PUBLIC
 
     FrameDialog(QWidget* parent = 0);
 
 
-private: /* --------------------------------------------------------- [PRIVATE] */
+public: // ---------------------------------------------------------- PUBLIC
 
 };

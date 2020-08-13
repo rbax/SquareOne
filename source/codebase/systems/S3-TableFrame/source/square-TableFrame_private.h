@@ -1,29 +1,25 @@
 #pragma once
 
-/* |INCLUDES: QT| */
+// Includes: Qt
 class QLineEdit;
 class QTableWidget;
 
-/* |INCLUDES: SQUARE| */
-
-/* |INCLUDES: PROJECT| */
+// Includes: Project
 #include "S3-TableFrame_Export.h"
-
 class TableFrame;
+
 
 class S3_TABLEFRAME_EXPORT TableFramePrivate {
 
-public: /* ---------------------------------------------------------- [PUBLIC] */
+public: // ---------------------------------------------------------- PUBLIC
 
     TableFramePrivate(TableFrame* q);
 
     QLineEdit* searchLineEdit_;
-
     QTableWidget* tableWidget_;
-
     QStringList columnNamesList_;
 
-private: /* --------------------------------------------------------- [PRIVATE] */
+private: // --------------------------------------------------------- PRIVATE
 
     TableFrame* q_ptr_;
 

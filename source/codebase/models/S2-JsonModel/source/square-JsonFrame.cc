@@ -116,7 +116,6 @@ QAction* JsonFrame::getAction_OpenFile() {
     return action_FileOpen_;
 }
 
-
 QAction* JsonFrame::getAction_TreeIn() {
 
     if (!action_Refresh_) {
@@ -134,7 +133,6 @@ QAction* JsonFrame::getAction_TreeIn() {
     return action_Refresh_;
 }
 
-
 QAction* JsonFrame::getAction_TreeOut() {
 
     if (!action_RefreshOutput) {
@@ -147,7 +145,6 @@ QAction* JsonFrame::getAction_TreeOut() {
 
     return action_RefreshOutput;
 }
-
 
 QAction* JsonFrame::getAction_NetPost() {
 
@@ -175,7 +172,6 @@ QAction* JsonFrame::getAction_NetPost() {
     return action_NetPost_;
 }
 
-
 QAction* JsonFrame::getAction_NetGet() {
 
     if (!action_NetGet_) {
@@ -194,8 +190,6 @@ QAction* JsonFrame::getAction_NetGet() {
 
     return action_NetGet_;
 }
-
-
 
 void JsonFrame::update_Actions() {
 
@@ -216,7 +210,6 @@ void JsonFrame::update_Actions() {
     //}
 }
 
-
 //connect(textEdit_, &QTextEdit::textChanged, [=] () {
 //
 //    if (model_->loadJson(textEdit_->toPlainText().toUtf8())) {
@@ -230,7 +223,6 @@ void JsonFrame::update_Actions() {
 //        textEdit_->append("Error loading JSON Data");
 //    }
 //});
-
 
 void JsonFrame::httpFinished() {
 

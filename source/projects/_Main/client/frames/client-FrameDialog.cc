@@ -1,10 +1,10 @@
-/* |INCLUDES: QT| */
+// Includes: Qt
 #include <QLayout>
 #include <QToolBar>
 #include <QStackedWidget>
 #include <QProcess>
 
-/* |INCLUDES: SQUARE| */
+// Includes: Square
 #include "square.h"
 #include "square-Menu.h"
 #include "square-Frame.h"
@@ -12,7 +12,7 @@
 #include "square-JsonFrame.h"
 #include "square-GraphFrame.h"
 
-/* |INCLUDES: PROJECT| */
+// Includes: Project
 #include "client-FrameDialog.h"
 #include "client-DragFrame.h"
 

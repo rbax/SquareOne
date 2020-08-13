@@ -1,9 +1,9 @@
 #pragma once
 
-/* |INCLUDES: QT| */
+// Includes: Qt
 #include <QListWidget>
 
-/* |INCLUDES: PROJECT| */
+// Includes: Project
 #include "S2-DragModel_Export.h"
 
 
@@ -11,19 +11,18 @@ class S2_DRAGMODEL_EXPORT DragListWidget : public QListWidget {
 
     Q_OBJECT
 
-public: /* ---------------------------------------------------------- [PUBLIC] */
+public: // ---------------------------------------------------------- PUBLIC
 
     explicit DragListWidget(QSize size, QWidget* parent = 0);
 
 
-protected: /* ------------------------------------------------------- [PROTECTED] */
+protected: // ------------------------------------------------------- PROTECTED
 
     void startDrag(Qt::DropActions supportedActions) Q_DECL_OVERRIDE;
 
 
-private: /* --------------------------------------------------------- [PRIVATE] */
+private: // --------------------------------------------------------- PRIVATE
 
     QSize size_;
-
     QString mimeString_;
 };

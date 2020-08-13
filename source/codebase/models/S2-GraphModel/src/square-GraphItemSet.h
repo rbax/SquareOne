@@ -1,19 +1,23 @@
 #pragma once
 
+// Includes: Qt
 #include <QString>
+class QTextStream;
+
+// Includes: Project
 #include "S2-GraphModel_Export.h"
 
-class QTextStream;
 
 //QT_FORWARD_DECLARE_CLASS(QTextStream)
 
+
 class S2_GRAPHMODEL_EXPORT ItemSet {
 
-public: /* ---------------------------------------------------------- [PUBLIC] */
+public: // ---------------------------------------------------------- PUBLIC
 
     ItemSet() {}
 
-private: /* --------------------------------------------------------- [PRIVATE] */
+private: // --------------------------------------------------------- PRIVATE
 
     QString uniqueName(const QString& name) const; // fix
 

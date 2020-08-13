@@ -1,29 +1,22 @@
 //#pragma once
 //
-///* |INCLUDES: QT| */
+//// Includes: Qt
 //class QWidget;
 //
-///* |INCLUDES: SQUARE| */
+//// Includes: Square
 //#include "S2-GraphModel_Export.h"
 //
-///* |INCLUDES: PROJECT| */
+//// Includes: Project
 //class GraphModelPrivate;
 //
 //class S2_GRAPHMODEL_EXPORT GraphModel {
 //
-//public: /* ---------------------------------------------------------- [PUBLIC] */
+//public: // ---------------------------------------------------------- PUBLIC
 //
 //    GraphModel();
 //
 //
-//  /* ------------------------------------------ (GET) */
-//
-//  /* ------------------------------------------ (GET ACTIONS) */
-//
-//
-//
-//
-//private: /* --------------------------------------------------------- [PRIVATE] */
+//private: // --------------------------------------------------------- PRIVATE
 //
 //    GraphModelPrivate *z_ptr_;
 //

@@ -10,39 +10,32 @@
 #include "square-Frame.h"
 #include "S1-GuiTools_Export.h"
 
+
 class S1_GUITOOLS_EXPORT Menu;
+
 
 class S1_GUITOOLS_EXPORT MenuPrivate : public QObject {
 
     Q_OBJECT
 
-public: /* ---------------------------------------------------------- [PUBLIC] */
+public: // ---------------------------------------------------------- PUBLIC
 
     MenuPrivate(Menu* q);
 
     int	register_Frame(FrameInterface* frame, QToolButton* button);
 
-    /* ------------------------------------- (SET) */
-
     void set_DisplayFrame(int frameID);
 
-    /* ------------------------------------- (GET) */
-
     FrameInterface* get_FrameInterface(int frameID);
-
     int get_FrameIndex(int frameID);
 
-    /* ------------------------------------- (VARIABLES) */
 
     QToolBar* toolbar_;
-
     QStackedWidget* stackedWidget_;
-
     QList<QPair<FrameInterface*, QToolButton*>> framePairList_;
-
     bool menuHides_;
 
-private: /* --------------------------------------------------------- [PRIVATE] */
+private: // --------------------------------------------------------- PRIVATE
 
     Menu* q_ptr_;
 };

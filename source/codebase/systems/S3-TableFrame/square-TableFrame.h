@@ -1,12 +1,12 @@
 #pragma once
 
-/* |INCLUDES: SQUARE| */
+// Includes: Square
 #include "square-FrameInterface.h"
 
-/* |INCLUDES: PROJECT| */
-
+// Includes: Project
 #include "S3-TableFrame_Export.h"
 class TableFramePrivate;
+
 
 class S3_TABLEFRAME_EXPORT TableFrame : public FrameInterface {
 
@@ -14,12 +14,12 @@ class S3_TABLEFRAME_EXPORT TableFrame : public FrameInterface {
 
         Q_OBJECT
 
-public: /* ---------------------------------------------------------- [PUBLIC] */
+public: // ---------------------------------------------------------- PUBLIC
 
     TableFrame(const QStringList& columnNameList);
 
 
-private: /* --------------------------------------------------------- [PRIVATE] */
+private: // --------------------------------------------------------- PRIVATE
 
     TableFramePrivate* z_ptr_;
 };

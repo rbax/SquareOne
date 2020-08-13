@@ -1,18 +1,16 @@
-
-/* |INCLUDES: QT| */
+// Includes: Qt
 #include <QtDebug>
 #include <QCommandLineParser>
 #include <QLoggingCategory>
 #include <QApplication>
-
 #include <QStyleFactory>
 #include <QDir>
 #include <QMessageBox>
 
-/* |INCLUDES: SQUARE| */
+// Includes: Square
 #include <square.h>
 
-/* |INCLUDES: PROJECT| */
+// Includes: Project
 #include "mainwindow.h"
 
 
@@ -49,23 +47,19 @@ int main(int argc, char** argv) {
     QScopedPointer<QCoreApplication> app(createApplication(argc, argv));
     QT_REQUIRE_VERSION(argc, argv, "5.2.0")
 
-    /* -------------------------------- (PATH) */
-
-        QDir path(QDir(qApp->applicationDirPath()));
-        // @TODO: use library paths instead (kludge)
+    QDir path(QDir(qApp->applicationDirPath()));
+    // @TODO: use library paths instead (kludge)
     path.cdUp();
     path.cdUp();
     SQUARE_IO::set_DeployPaths(path.canonicalPath());
 
-/* --------------------------------------------------------------- (GUI) */
+    // ---------------------------------------------------------- (GUI)
 
     if (qobject_cast<QApplication*>(app.data())) {
         QApplication::setStyle(QStyleFactory::create("Fusion"));
         QPalette palette(qApp->palette());
         SQUARE_STYLES::set_PaletteStyle(palette);
         qApp->setPalette(palette);
-
-    /* -------------------------------- (MAIN WINDOW) */
 
         MainWindow mainWindow;
         mainWindow.setGeometry(100, 100, 800, 500);
@@ -74,7 +68,7 @@ int main(int argc, char** argv) {
         return app->exec();
     }
 
-    /* --------------------------------------------------------------- (CLI) */
+    // ---------------------------------------------------------- CLI
 
     else {
         return app->exec();

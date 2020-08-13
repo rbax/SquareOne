@@ -1,4 +1,4 @@
-/* |INCLUDES: QT| */
+// Includes: Qt
 #include <QDrag>
 #include <QDragEnterEvent>
 #include <QMimeData>
@@ -6,15 +6,15 @@
 #include <QDebug>
 #include <QAction>
 
-/* |INCLUDES: SQUARE| */
+// Includes: Square
 #include "square.h"
 
-/* |INCLUDES: PROJECT| */
+// Includes: Project
 #include "square-DragWidget.h"
 #include "square-DragItem.h"
 
 
-/* ------------------------------------------------------------------ [PUBLIC] */
+// ------------------------------------------------------------------ PUBLIC
 
 DragWidget::DragWidget(QSize _imageSize, QWidget* _parent)
     :
@@ -34,7 +34,8 @@ void DragWidget::clear() {
     // @todo clean up dragitems, hashtable, etc
 }
 
-/* ------------------------------------------------------------------ [PROTECTED] */
+
+// ------------------------------------------------------------------ PROTECTED
 
 void DragWidget::mousePressEvent(QMouseEvent* event) {
 
@@ -173,7 +174,8 @@ void DragWidget::paintEvent(QPaintEvent* event) {
     painter.end();
 }
 
-/* ------------------------------------------------------------------ [PRIVATE] */
+
+// ------------------------------------------------------------------ PRIVATE
 
 int DragWidget::itemSize() const { //@TODO this is dumb
 

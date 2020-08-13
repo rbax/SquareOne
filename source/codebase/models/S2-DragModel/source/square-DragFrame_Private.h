@@ -1,14 +1,14 @@
 #pragma once
 
-/* |INCLUDES: QT| */
+// Includes: Qt
 #include <QSize>
 class QSplitter;
 class QToolButton;
 
-/* |INCLUDES: SQUARE| */
+// Includes: Square
 #include "square-Menu.h"
 
-/* |INCLUDES: PROJECT| */
+// Includes: Project
 #include "S2-DragModel_Export.h"
 class DragFrame;
 class DragWidget;
@@ -17,7 +17,7 @@ struct DragItem;
 
 class S2_DRAGMODEL_EXPORT DragFramePrivate {
 
-public: /* ---------------------------------------------------------- [PUBLIC] */
+public: // ---------------------------------------------------------- PUBLIC
 
     DragFramePrivate(DragFrame* q);
 
@@ -26,7 +26,6 @@ public: /* ---------------------------------------------------------- [PUBLIC] *
     void insert_Items(QToolButton* button, const QList<DragItem*>& dragItemList);
 
     QSize itemSize_;
-
     QString mimeString_;
 
     Menu itemMenu_;
@@ -34,7 +33,7 @@ public: /* ---------------------------------------------------------- [PUBLIC] *
 
     QSplitter* splitter_;
 
-private: /* --------------------------------------------------------- [PRIVATE] */
+private: // --------------------------------------------------------- PRIVATE
 
     DragFrame* q_ptr_;
 

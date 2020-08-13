@@ -1,9 +1,6 @@
-
-/* |INCLUDES: |QT| */
+// Includes: Qt
 #include "qvboxlayout"
 #include <qtoolbutton.h>
-
-//#include <QtPlugin>
 #include "qframe.h"
 #include "qobject.h"
 #include "qsignalmapper.h"
@@ -11,12 +8,12 @@
 #include "qtoolbar.h"
 #include "qlayout.h"
 
-/* |INCLUDES: |PROJECT| */
+// Includes: Project
 #include "square-FrameInterface.h"
 #include "square-FrameInterface_Private.h"
 #include "square.h"
 
-/* ------------------------------------------------------------------ [PUBLIC] */
+// ---------------------------------------------------------- PUBLIC
 
 FrameInterface::FrameInterface(FrameInterfacePrivate& _d): z_ptr_(&_d) {
 
@@ -44,8 +41,7 @@ void FrameInterface::insert_Widget(QWidget* _widget, Location _location) {
 
     switch (_location) {
 
-        /* ------------------------------------------------ (HEADER) */
-        case HEADER:
+        case HEADER: {
 
             if (!z_ptr_->headContainer_) {
 
@@ -55,9 +51,8 @@ void FrameInterface::insert_Widget(QWidget* _widget, Location _location) {
 
             z_ptr_->headContainer_->layout()->addWidget(_widget);
             break;
-
-        /* ------------------------------------------------ (BODY) */
-        case BODY:
+        }
+        case BODY: {
 
             if (!z_ptr_->bodyContainer_) {
 
@@ -67,9 +62,8 @@ void FrameInterface::insert_Widget(QWidget* _widget, Location _location) {
 
             z_ptr_->bodyContainer_->layout()->addWidget(_widget);
             break;
-
-        /* ------------------------------------------------ (FOOTER) */
-        case FOOTER:
+        }
+        case FOOTER: {
 
             if (!z_ptr_->footContainer_) {
 
@@ -79,6 +73,7 @@ void FrameInterface::insert_Widget(QWidget* _widget, Location _location) {
 
             z_ptr_->footContainer_->layout()->addWidget(_widget);
             break;
+        }
     }
 }
 
@@ -89,5 +84,4 @@ FrameInterfacePrivate::FrameInterfacePrivate(FrameInterface* _q):
     bodyContainer_(0),
     footContainer_(0),
     toolButton_(0) {
-
 }

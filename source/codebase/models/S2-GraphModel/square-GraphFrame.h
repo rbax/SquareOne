@@ -1,6 +1,6 @@
 #pragma once
 
-/* |INCLUDES: QT| */
+// Includes: Qt
 class QAction;
 class QToolBox;
 class QSpinBox;
@@ -18,16 +18,14 @@ class QToolBar;
 class QSplitter;
 class QLabel;
 
-class DialogOptionsWidget;
+// Includes: Square
+#include "square-FrameInterface.h"
 
+// Includes: Project
+#include "S2-GraphModel_Export.h"
+class DialogOptionsWidget;
 class GraphScene;
 
-/* |INCLUDES: PROJECT| */
-#include "S2-GraphModel_Export.h"
-
-
-/* |INCLUDES: SQUARE| */
-#include "square-FrameInterface.h"
 
 class S2_GRAPHMODEL_EXPORT GraphFrame : public FrameInterface {
 
@@ -42,7 +40,7 @@ class S2_GRAPHMODEL_EXPORT GraphFrame : public FrameInterface {
         SET // a collection of items tied to a defined "item set"
     };
 
-public: /* ---------------------------------------------------------- [PUBLIC] */
+public: // ---------------------------------------------------------- PUBLIC
 
     GraphFrame();
 
@@ -51,7 +49,7 @@ public: /* ---------------------------------------------------------- [PUBLIC] *
 
     //void setColor();
 
-    /* ------------------------------------------ (ACTIONS) */
+    // - - - - - Actions
 
     QAction* action_Exit();
 
@@ -63,13 +61,12 @@ public: /* ---------------------------------------------------------- [PUBLIC] *
     QAction* action_ItemToFront();
     QAction* action_ItemToBack();
 
-
     QAction* action_TextBold();
     QAction* action_TextUnderline();
     QAction* action_TextItalic();
 
 
-private slots: /* --------------------------------------------------- [PRIVATE SLOTS] */
+private slots: // --------------------------------------------------- PRIVATE SLOTS
 
     void slot_UpdateTextColor();
     void slot_UpdateItemColor();
@@ -81,9 +78,7 @@ private slots: /* --------------------------------------------------- [PRIVATE S
 
     void slot_HandleFontChange();
 
-private: /* --------------------------------------------------------- [PRIVATE] */
-
-    /* ------------------------------------------ (TOOLBARS) */
+private: // --------------------------------------------------------- PRIVATE
 
     QToolBar* create_ModeToolBar();
     QToolBar* create_ColorToolBar();
@@ -92,8 +87,6 @@ private: /* --------------------------------------------------------- [PRIVATE] 
     QToolBar* create_ZoomToolBar();
 
   //  QToolBar* create_ItemToolBar();
-
-    /* ------------------------------------------ (MENUS) */
 
     QWidget* menu_ItemGUI();
     QWidget* menu_ItemData();
@@ -107,7 +100,7 @@ private: /* --------------------------------------------------------- [PRIVATE] 
     GraphScene* scene_;
     QGraphicsView* view_;
 
-    /* ------------------------------------------ (ACTIONS) */
+    // - - - - - Actions
 
     QAction* zoomResetAction_ = 0;
     QAction* zoomInAction_ = 0;
@@ -129,35 +122,27 @@ private: /* --------------------------------------------------------- [PRIVATE] 
     QAction* fillAction_ = 0;
     QAction* lineAction_ = 0;
 
-    /* ------------------------------------------ (Item Collections) */
+    // - - - - - Item Collections
 
     QMenu* itemMenu_;
 
     QComboBox* fontSizeCombo_;
-
     QFontComboBox* fontCombo_;
 
     QButtonGroup* pointerModeGroup;
     QButtonGroup* backgroundButtonGroup;
     QButtonGroup* pointerTypeGroupbuttonGroup;
 
-    /* ------------------------------------------ (Buttons) */
-
     QToolButton* fontColorButton_;
     QToolButton* fillColorButton_;
     QToolButton* lineColorButton_;
-
     QToolButton* pointerButton_;
 
-/* test item menus */
+    // - - - - - test item menus
 
     QLabel* colorLabel;
     DialogOptionsWidget* colorDialogOptionsWidget;
-
-
     QComboBox* item_TextSizeCombo_;
-
     QFontComboBox* item_TextFontCombo_;
-
     QSplitter* splitter_;
 };

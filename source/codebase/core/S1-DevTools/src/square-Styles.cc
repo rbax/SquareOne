@@ -1,24 +1,24 @@
-
-/* |INCLUDES: QT| */
+// Includes: Qt
 #include <QFrame>
 #include <QLayout>
 
-/* |INCLUDES: SQUARE| */
+// Includes: Square
 #include "square.h"
 
-/* --------------------------------------------------------------- [CSV FUNCIONS] */
 SQUARE_START
+
 
 void Styles::set_FrameStyle(QFrame& _frame, FrameStyle _style) {
 
     switch (_style) {
 
-        /* --------------------------------------------- (DEEP) */
         case DEEP:
+        {
             _frame.setFrameStyle(QFrame::Panel | QFrame::Sunken);
             _frame.setLineWidth(3);
             _frame.setMidLineWidth(3);
             break;
+        }
     }
 }
 
@@ -37,14 +37,14 @@ void Styles::set_PaletteStyle(QPalette& _palette, PaletteStyle _style) {
 
     switch (_style) {
 
-        /* --------------------------------------------- (STANDARD) */
-
         case STANDARD:
+        {
             button = QColor(105, 105, 105);
             window = QColor(53, 53, 53);
             highlight = QColor(66, 192, 251); // Caribbean Blue
             buttonText = QColor(Qt::white);
             windowText = QColor(Qt::black);
+        }
     }
 
     _palette.setColor(QPalette::Window, window);
@@ -53,6 +53,7 @@ void Styles::set_PaletteStyle(QPalette& _palette, PaletteStyle _style) {
     _palette.setColor(QPalette::ButtonText, buttonText);
     _palette.setColor(QPalette::WindowText, windowText);
 }
+
 
 SQUARE_END
 

@@ -1,11 +1,12 @@
 #pragma once
 
+// Includes: Qt
 #include <QGraphicsTextItem>
-
 class QFocusEvent;
 class QGraphicsItem;
 class QGraphicsSceneMouseEvent;
 
+// Includes: Project
 #include "S2-GraphModel_Export.h"
 #include "square-GraphNode.h"
 
@@ -15,7 +16,7 @@ class S2_GRAPHMODEL_EXPORT GraphTextItem : public QGraphicsTextItem, public Node
     Q_INTERFACES(NodeInterface)
         Q_OBJECT
 
-public: /* ---------------------------------------------------------- [PUBLIC] */
+public: // ---------------------------------------------------------- PUBLIC
 
     enum { Type = UserType + IType::TEXT };
 
@@ -23,12 +24,12 @@ public: /* ---------------------------------------------------------- [PUBLIC] *
 
     int type() const Q_DECL_OVERRIDE { return Type; }
 
-signals: /* --------------------------------------------------------- [SIGNALS] */
+signals: // --------------------------------------------------------- SIGNALS
 
     void signal_LostFocus(GraphTextItem* item);
     void signal_SelectionChange(QGraphicsItem* item);
 
-protected: /* ------------------------------------------------------- [PROTECTED] */
+protected: // ------------------------------------------------------- PROTECTED
 
     QVariant itemChange(GraphicsItemChange change, const QVariant& value) Q_DECL_OVERRIDE;
     void focusOutEvent(QFocusEvent* event) Q_DECL_OVERRIDE;

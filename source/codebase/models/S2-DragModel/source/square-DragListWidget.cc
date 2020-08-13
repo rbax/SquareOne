@@ -1,14 +1,15 @@
-/* |INCLUDES: QT| */
+// Includes: Qt
 #include <QDrag>
 #include <QDragEnterEvent>
 #include <QMimeData>
 #include <QDebug>
 
-/* |INCLUDES: PROJECT| */
+// Includes: Project
 #include "square-DraglistWidget.h"
 #include "square-DragItem.h"
 
-/* ------------------------------------------------------------------ [PUBLIC] */
+
+// ------------------------------------------------------------------ PUBLIC
 
 DragListWidget::DragListWidget(QSize _size, QWidget* _parent)
     :
@@ -25,11 +26,10 @@ DragListWidget::DragListWidget(QSize _size, QWidget* _parent)
     setWrapping(false);
 }
 
-/* ------------------------------------------------------------------ [PROTECTED] */
+
+// ------------------------------------------------------------------ PROTECTED
 
 void DragListWidget::startDrag(Qt::DropActions) {
-
-
 
     QListWidgetItem* item = currentItem();
     QPixmap pixmap = qvariant_cast<QPixmap>(item->data(Qt::UserRole));
@@ -46,7 +46,7 @@ void DragListWidget::startDrag(Qt::DropActions) {
     drag->setPixmap(pixmap);
     drag->setMimeData(mimeData);
     drag->setHotSpot(QPoint(pixmap.width() / 2,
-                     pixmap.height() / 2));
+                            pixmap.height() / 2));
 
     if (drag->exec(Qt::MoveAction) == Qt::MoveAction) {/* ? */ };
 }

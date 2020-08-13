@@ -1,11 +1,9 @@
 #pragma once
 
-/* |INCLUDES: QT| */
-
-/* |INCLUDES: SQUARE| */
+// Includes: Square
 #include "square-FrameInterface.h"
 
-/* |INCLUDES: PROJECT| */
+// Includes: Project
 #include "_client_Export.h"
 
 
@@ -15,11 +13,11 @@ class _CLIENT_EXPORT ClientDragFrame : public FrameInterface {
 
         Q_OBJECT
 
-public: /* ---------------------------------------------------------- [PUBLIC] */
+public: // ---------------------------------------------------------- PUBLIC
 
     ClientDragFrame();
 
 
-private: /* --------------------------------------------------------- [PRIVATE] */
+private: // --------------------------------------------------------- PRIVATE
 
 };

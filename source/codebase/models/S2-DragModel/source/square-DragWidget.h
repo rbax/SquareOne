@@ -1,6 +1,6 @@
 #pragma once
 
-/* |INCLUDES: QT| */
+// Includes: Qt
 #include <QList>
 #include <QPoint>
 #include <QPixmap>
@@ -9,16 +9,16 @@ class QDragEnterEvent;
 class QDropEvent;
 class QMouseEvent;
 
-struct DragItem;
-
+// Includes: Project
 #include "S2-DragModel_Export.h"
+struct DragItem;
 
 
 class S2_DRAGMODEL_EXPORT DragWidget : public QWidget {
 
     Q_OBJECT
 
-public: /* ---------------------------------------------------------- [PUBLIC] */
+public: // ---------------------------------------------------------- PUBLIC
 
     explicit DragWidget(QSize imageSize, QWidget* parent = 0);
 
@@ -27,11 +27,11 @@ public: /* ---------------------------------------------------------- [PUBLIC] *
     DragItem* get_DragItem(const QRect& itemRect);
 
 
-signals: /* --------------------------------------------------------- [SIGNALS] */
+signals: // --------------------------------------------------------- SIGNALS
 
     void signal_ItemSelected(QRect selectedRectangle);
 
-protected: /* ------------------------------------------------------- [PROTECTED] */
+protected: // ------------------------------------------------------- PROTECTED
 
     void dragMoveEvent(QDragMoveEvent* event) Q_DECL_OVERRIDE;
     void dragLeaveEvent(QDragLeaveEvent* event) Q_DECL_OVERRIDE;
@@ -42,34 +42,26 @@ protected: /* ------------------------------------------------------- [PROTECTED
 
     void paintEvent(QPaintEvent* event) Q_DECL_OVERRIDE;
 
-private: /* --------------------------------------------------------- [PRIVATE] */
+private: // --------------------------------------------------------- PRIVATE
 
 
     int itemSize() const;
-
     int findItem(const QRect& itemRectangle) const;
 
     DragItem* take_DragItem(const QRect& itemRectangle);
-
     const QRect targetSquare(const QPoint& position) const;
 
-    /* --------------------------------------------------------------- [PRIVATE] */
-
-    QHash<QRect, DragItem*> dragItemHash_;
-
-    QRect highlightRectangle_;
 
     int imageSize_;
-
-    QString mimeString_;
-
     int itemCount_;
-
+    QRect highlightRectangle_;
+    QString mimeString_;
+    QHash<QRect, DragItem*> dragItemHash_;
     DragItem* selectedItem_;
 };
 
 
-/* ------------------------------------------------------------------ [INLINE] */
+// ------------------------------------------------------------------ INLINE
 
 inline uint qHash(const QRect& _r) {
 

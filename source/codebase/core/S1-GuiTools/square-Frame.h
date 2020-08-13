@@ -1,8 +1,10 @@
 #pragma once
 
-/* |INCLUDES: SQUARE| */
-#include "S1-GuiTools_Export.h"
+// Includes: Square
 #include "square-FrameInterface.h"
+
+// Includes: Project
+#include "S1-GuiTools_Export.h"
 
 
 class S1_GUITOOLS_EXPORT Frame : public FrameInterface {
@@ -10,7 +12,7 @@ class S1_GUITOOLS_EXPORT Frame : public FrameInterface {
     Q_INTERFACES(FrameInterface)
         Q_OBJECT
 
-public: /* ---------------------------------------------------------- [PUBLIC] */
+public: // ---------------------------------------------------------- PUBLIC
 
     Frame(): FrameInterface() {}
 
@@ -18,6 +20,6 @@ public: /* ---------------------------------------------------------- [PUBLIC] *
         insert_Widget(_widget, _location);
     }
 
-private: /* --------------------------------------------------------- [PRIVATE] */
+public: // ---------------------------------------------------------- PUBLIC
 
 };

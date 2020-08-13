@@ -1,10 +1,10 @@
 #pragma once
 
-/* |INCLUDES: QT| */
+// Includes: Qt
 #include <QPixmap>
 #include <QMetaType>
 
-/* |INCLUDES: PROJECT| */
+// Includes: Project
 #include "S2-DragModel_Export.h"
 
 
@@ -18,5 +18,6 @@ struct S2_DRAGMODEL_EXPORT DragItem {
     QRect rect;
     QSize size;
 };
+
 
 Q_DECLARE_METATYPE(DragItem)

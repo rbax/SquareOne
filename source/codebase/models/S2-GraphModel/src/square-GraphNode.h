@@ -1,16 +1,18 @@
 #pragma once
 
+// Includes: Qt
 #include <QGradient>
 #include <QPolygon>
 
+// Includes: Project
 #include "S2-GraphModel_Export.h"
-
 struct GraphItem;
 struct GraphData;
 
+
 class S2_GRAPHMODEL_EXPORT NodeInterface {
 
-public: /* ---------------------------------------------------------- [PUBLIC] */
+public: // ---------------------------------------------------------- PUBLIC
 
     enum IType { VERTEX = 1, EDGE = 2, TEXT };
 
@@ -27,11 +29,11 @@ public: /* ---------------------------------------------------------- [PUBLIC] *
     virtual QString name() const { return name_; }
     virtual void setName(QString& name) { name_ = name; }
 
-signals: /* --------------------------------------------------------- [SIGNALS] */
+signals: // --------------------------------------------------------- SIGNALS
 
     void signal_Selected(int itemID);
 
-protected: /* ------------------------------------------------------- [PROTECTED] */
+protected: // ------------------------------------------------------- PROTECTED
 
     const QSize minSize() const { return QSize(80, 50); }
     const int handleSize() const { return 6; }
@@ -39,7 +41,7 @@ protected: /* ------------------------------------------------------- [PROTECTED
     static QGradient gradient(QColor& _color, QRectF& _rect);
     static QPolygon triangle(QRectF& _rect);
 
-private: /* --------------------------------------------------------- [PRIVATE] */
+private: // --------------------------------------------------------- PRIVATE
 
     int itemID_ = -1;
     QString name_ = "";

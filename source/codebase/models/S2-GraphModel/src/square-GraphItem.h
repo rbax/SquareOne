@@ -1,12 +1,13 @@
 #pragma once
 
-/* |INCLUDES: QT| */
+// Includes: Qt
 #include <QMetaType>
 #include <QColor>
 #include <QRectF>
 
-/* |INCLUDES: PROJECT| */
+// Includes: Project
 #include "S2-GraphModel_Export.h"
+
 
 struct S2_GRAPHMODEL_EXPORT GraphItem {
 

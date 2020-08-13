@@ -1,12 +1,12 @@
-/* |INCLUDES:  |QT| */
+// Includes: Qt
 #include <QSize>
 #include <QDir>
 
-/* |INCLUDES:  |SQUARE| */
+// Includes: Square
 #include "square.h"
 #include "square-DragFrame.h"
 
-/* |INCLUDES:  |PROJECT| */
+// Includes: Project
 #include "client-DragFrame.h"
 
 

@@ -11,7 +11,7 @@
 
 class S2_JSONMODEL_EXPORT JsonItem {
 
-public: /* ---------------------------------------------------------- [PUBLIC] */
+public: // ---------------------------------------------------------- PUBLIC
 
     JsonItem(JsonItem* parent = 0): parent_(parent) {}
     ~JsonItem() { qDeleteAll(children_); }
@@ -35,7 +35,7 @@ public: /* ---------------------------------------------------------- [PUBLIC] *
     QJsonValue::Type type_;
     JsonItem* parent_;
 
-private: /* --------------------------------------------------------- [PRIVATE] */
+private: // --------------------------------------------------------- PRIVATE
 
     void appendChild(JsonItem* item) { children_.append(item); }
 

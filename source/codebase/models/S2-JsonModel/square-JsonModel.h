@@ -1,34 +1,35 @@
 #pragma once
 
+// Includes: Qt
 #include <QAbstractItemModel>
-#include "square-JSONItem.h"
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QIcon>
 
+// Includes: Project
 #include "S2-JsonModel_Export.h"
+#include "square-JSONItem.h"
+
 
 class S2_JSONMODEL_EXPORT JsonModel : public QAbstractItemModel {
 
     Q_OBJECT
 
         enum Column {
-
         Key = 0,
         Value = 1,
         ValueMin,
         ValueMax,
     };
 
-public: /* ---------------------------------------------------------- [PUBLIC] */
+public: // ---------------------------------------------------------- PUBLIC
 
     explicit JsonModel(const QStringList& columnNames, QObject* parent = 0);
 
     ~JsonModel();
 
 
-    /* |ITEM DATA HANDLING|
-    ----------------------------------------------------------------- */
+    // - - - - -ITEM DATA HANDLING
 
     QVariant data(const QModelIndex& index, int role) const Q_DECL_OVERRIDE;
     bool setData(const QModelIndex& index, const QVariant& value, int role = Qt::EditRole) Q_DECL_OVERRIDE;
@@ -39,8 +40,7 @@ public: /* ---------------------------------------------------------- [PUBLIC] *
     QVariant headerData(int section, Qt::Orientation orientation, int role) const Q_DECL_OVERRIDE;
 
 
-    /* NAVIGATION AND INDEX CREATION
-     ----------------------------------------------------------------- */
+    // - - - - - NAVIGATION AND INDEX CREATION
 
     QModelIndex index(int row, int column, const QModelIndex& parent = QModelIndex()) const Q_DECL_OVERRIDE;
     QModelIndex parent(const QModelIndex& index) const Q_DECL_OVERRIDE;
@@ -49,14 +49,13 @@ public: /* ---------------------------------------------------------- [PUBLIC] *
     int columnCount(const QModelIndex& parent = QModelIndex()) const Q_DECL_OVERRIDE;
 
 
-    /* SETUP
-    ----------------------------------------------------------------- */
+    // - - - - -SETUP
 
     bool loadJson(const QByteArray& json);
     QString get_Json() { return document_.toJson(); }
 
 
-private: /* --------------------------------------------------------- [PRIVATE] */
+private: // --------------------------------------------------------- PRIVATE
 
     bool load(const QString& fileName);
     bool load(QIODevice* device) { return loadJson(device->readAll()); }

@@ -1,9 +1,8 @@
 #pragma once
 
-/* |INCLUDES: QT| */
+// Includes: Qt
 #include <QtCore>
 #include <QtDebug>
-
 class QLabel;
 class QToolButton;
 class QFrame;
@@ -11,11 +10,15 @@ class QListWidgetItem;
 class QTableWidget;
 class QSize;
 
-/* |INCLUDES: SQUARE| */
-#include "S1-DevTools_Export.h"
+// Includes: Square
 #include "square-Macros.h"
 
+// Includes: Project
+#include "S1-DevTools_Export.h"
+
+
 SQUARE_START
+
 
 class S1_DEVTOOLS_EXPORT Objects {
 
@@ -31,12 +34,12 @@ public:
     };
 
 
-    /* ---------------------------------------------------------- (STANDARDIZATION) */
+    // ---------------------------------------------------------- STANDARDIZATION
 
     static
         QSize get_StandardSize(StandardSize);
 
-    /* --------------------------------------------------------------- [BUTTONS] */
+    // ---------------------------------------------------------- BUTTONS
 
     static
         QToolButton* button(QString imageName,
@@ -54,19 +57,19 @@ public:
                             QSize   buttonSize);
 
 
-    /* --------------------------------------------------------------- [LABELS] */
+   // ---------------------------------------------------------- LABELS
 
     static
         QLabel* label(QString imagePath,
                       QString imageName,
                       QSize   labelSize);
 
-    /* --------------------------------------------------------------- [ITEMS] */
+    // ---------------------------------------------------------- ITEMS
 
     static
         QListWidgetItem* listWidgetItem(const QPixmap& pixmap);
 
-    /* --------------------------------------------------------------- [FRAME/LAYOUT] */
+    // ---------------------------------------------------------- FRAME/LAYOUT
 
     static
         QWidget* containerH();
@@ -74,7 +77,7 @@ public:
     static
         QWidget* containerV();
 
-    /* --------------------------------------------------------------- [TABLES] */
+    // ---------------------------------------------------------- TABLES
 
     static
         QTableWidget* tableWidget(QStringList columnNameList);
@@ -91,15 +94,16 @@ public:
                           int columns);
 
 
-    /* --------------------------------------------------------------- [TREES] */
+    // ---------------------------------------------------------- TREES
 
     static
         void insert_Row();
 
-    /* --------------------------------------------------------------- [SPACERS] */
+    // ---------------------------------------------------------- SPACERS
 
     static
         QWidget* spacer(QSize stretch = QSize(0, 0));
 };
+
 
 SQUARE_END

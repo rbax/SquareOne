@@ -1,5 +1,4 @@
-
-/* |INCLUDES: QT| */
+// Includes: Qt
 #include <QLayout>
 #include <QToolButton>
 #include <QFrame>
@@ -11,12 +10,13 @@
 #include <QPoint>
 #include <QSize>
 
-/* |INCLUDES: SQUARE| */
+// Includes: Square
 #include "square.h"
+
 
 SQUARE_START
 
-/* --------------------------------------------------------------- (STANDARDIZATION FUNCIONS) */
+// ---------------------------------------------------------- STANDARDIZATION FUNCIONS
 
 QSize Objects::get_StandardSize(StandardSize _type) {
 
@@ -32,7 +32,7 @@ QSize Objects::get_StandardSize(StandardSize _type) {
     }
 }
 
-/* ------------------------------------------------------------------ [BUTTONS] */
+// ----------------------------------------------------------  BUTTONS
 
 QToolButton* Objects::button(QString _name, QSize _size) {
 
@@ -69,7 +69,7 @@ QToolButton* Objects::button(QString _imagePath, QString _imageOn, QString _imag
     return toggleButton;
 }
 
-/* ------------------------------------------------------------------ [LABELS] */
+// ---------------------------------------------------------- LABELS
 
 QLabel* Objects::label(QString _imagePath, QString _imageName, QSize _size) {
 
@@ -82,7 +82,7 @@ QLabel* Objects::label(QString _imagePath, QString _imageName, QSize _size) {
     return label;
 }
 
-/* ------------------------------------------------------------------ [ITEMS] */
+// ---------------------------------------------------------- ITEMS
 
 QListWidgetItem* Objects::listWidgetItem(const QPixmap& _pixmap) {
 
@@ -94,7 +94,7 @@ QListWidgetItem* Objects::listWidgetItem(const QPixmap& _pixmap) {
     return item;
 }
 
-/* ------------------------------------------------------------------ [FRAME/LAYOUT] */
+// ---------------------------------------------------------- FRAME/LAYOUT
 
 QWidget* Objects::containerH() {
 
@@ -117,7 +117,7 @@ QWidget* Objects::containerV() {
     return container;
 }
 
-/* --------------------------------------------------------------- [TABLES] */
+// ---------------------------------------------------------- TABLES
 
 QTableWidget* Objects::tableWidget(QStringList _columnNameList) {
 
@@ -163,7 +163,7 @@ void Objects::resize_Table(QTableWidget& _table, int _rows, int _columns) {
     _table.setFixedSize(width, height);
 }
 
-/* --------------------------------------------------------------- [SPACERS] */
+// ---------------------------------------------------------- SPACERS
 
 QWidget* Objects::spacer(QSize _stretch) {
 
@@ -178,5 +178,6 @@ QWidget* Objects::spacer(QSize _stretch) {
 
     return spacer;
 }
+
 
 SQUARE_END

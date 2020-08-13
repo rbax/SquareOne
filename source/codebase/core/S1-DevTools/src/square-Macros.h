@@ -6,10 +6,8 @@
 #define FOR_IR(a) for (unsigned i = (a); i-- > 0;)
 #define FOR_JR(a) for (unsigned j = (a); j-- > 0;)
 
-
 #define SQUARE_START extern "C++" { namespace Square {
 #define SQUARE_END } }
-
 
 #define SQUARE_OBJ Square::Objects
 #define SQUARE_IO Square::IO

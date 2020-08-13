@@ -582,7 +582,6 @@ QAction* GraphFrame::action_ItemToBack() {
     return sendBackAction_;
 }
 
-
 QAction* GraphFrame::action_TextBold() {
 
     if (!boldAction_) {

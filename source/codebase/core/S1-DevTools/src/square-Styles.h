@@ -1,16 +1,20 @@
 #pragma once
 
-/* |INCLUDES: QT| */
+// Includes: Qt
 class QLayout;
 class QFrame;
 class QPalette;
 
-/*  |INCLUDES: PROJECT| */
-#include "S1-DevTools_Export.h"
+// Includes: Square
 #include "square-Macros.h"
 class FrameInterface;
 
+// Includes: Project
+#include "S1-DevTools_Export.h"
+
+
 SQUARE_START
+
 
 class S1_DEVTOOLS_EXPORT Styles {
 
@@ -28,14 +32,13 @@ public:
         STANDARD = 0,
     };
 
-    /* ---------------------------------------------------------- (FRAME STYLES) */
+    // ---------------------------------------------------------- FRAME STYLES
 
     static
         void set_FrameStyle(QFrame& frame,
                             FrameStyle style = DEEP);
 
-
-    /* ---------------------------------------------------------- (LAYOUT STYLES) */
+    // ---------------------------------------------------------- LAYOUT STYLES
 
     static
         void set_LayoutStyle(QLayout& layout,
@@ -45,5 +48,6 @@ public:
         void set_PaletteStyle(QPalette& palette,
                               PaletteStyle style = STANDARD);
 };
+
 
 SQUARE_END

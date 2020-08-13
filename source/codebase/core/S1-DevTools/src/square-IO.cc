@@ -1,5 +1,5 @@
 
-/* |INCLUDES: QT| */
+// Includes: Qt
 #include <QTableWidget>
 #include <QDebug>
 #include <QDir>
@@ -8,14 +8,13 @@
 #include <QTextStream>
 #include <QFile>
 
-/* |INCLUDES: SQUARE| */
+// Includes: Square
 #include "square.h"
 
-/* |INCLUDES: PROJECT| */
 
 SQUARE_START
 
-/* --------------------------------------------------------------- (PATH FUNCTIONS) */
+// ---------------------------------------------------------- PATH FUNCTIONS
 
 void IO::set_DeployPaths(const QString& _path) {
 
@@ -39,7 +38,7 @@ QString IO::get_DataPath(const QString& _projectName) {
     return QString("assets:").append(_projectName).append("/data/");
 }
 
-/* --------------------------------------------------------------- [FILE FUNCIONS] */
+// ---------------------------------------------------------- FILE FUNCIONS
 
 bool IO::fileExists(const QString& _filePath) {
 

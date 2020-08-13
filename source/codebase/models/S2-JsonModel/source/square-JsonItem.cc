@@ -164,7 +164,6 @@ QString JsonItem::toString(int _column) {
     return QString();
 }
 
-
 QString JsonItem::value(int _itemNum) {
 
     QString value((values_.size() >= _itemNum + 1)

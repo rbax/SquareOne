@@ -5,18 +5,17 @@
 /* |INCLUDES: SQUARE| */
 #include "S1-GuiTools_Export.h"
 
+
 class S1_GUITOOLS_EXPORT FrameInterface;
 
 
 class S1_GUITOOLS_EXPORT FrameInterfacePrivate {
 
-public: /* ---------------------------------------------------------- [PUBLIC] */
+public: // ---------------------------------------------------------- PUBLIC
 
     FrameInterfacePrivate(FrameInterface* q);
 
     virtual ~FrameInterfacePrivate() {}
-
-    /* ------------------------------------- (VARIABLES) */
 
     QWidget* headContainer_;
     QWidget* bodyContainer_;
@@ -29,7 +28,7 @@ public: /* ---------------------------------------------------------- [PUBLIC] *
 
     QToolButton* toolButton_;
 
-private: /* --------------------------------------------------------- [PRIVATE] */
+private: // --------------------------------------------------------- PRIVATE
 
     FrameInterface* q_ptr_;
 };

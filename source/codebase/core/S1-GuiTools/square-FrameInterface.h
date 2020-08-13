@@ -1,18 +1,20 @@
 #pragma once
 
-/* |INCLUDES: QT| */
+// Includes: Qt
 #include <QFrame>
 #include <QToolButton>
 #include <QVBoxLayout>
 
-/* |INCLUDES: SQUARE| */
+// Includes: Project
 #include "S1-GuiTools_Export.h"
+
 
 class S1_GUITOOLS_EXPORT FrameInterfacePrivate;
 
+
 class S1_GUITOOLS_EXPORT FrameInterface : public QFrame {
 
-public: /* ---------------------------------------------------------- [PUBLIC] */
+public: // ---------------------------------------------------------- PUBLIC
 
     enum Location {
         HEADER = 0,
@@ -28,7 +30,7 @@ public: /* ---------------------------------------------------------- [PUBLIC] *
     int frameID_;
     bool locked_;	/* True if locked, default is false */
 
-protected: /* ------------------------------------------------------- [PROTECTED] */
+protected: // ------------------------------------------------------- PROTECTED
 
     FrameInterface(FrameInterfacePrivate& d);
 

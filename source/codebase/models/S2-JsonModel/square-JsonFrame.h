@@ -5,7 +5,6 @@
 #include <QJsonObject>
 #include <QNetworkAccessManager>
 #include <QUrl>
-
 class QTextEdit;
 class QTreeView;
 class QTabWidget;
@@ -14,11 +13,11 @@ class QNetworkReply;
 class QLineEdit;
 
 // Includes Square
-#include "square-JsonModel.h"
 #include "square-FrameInterface.h"
 
-// Includes Local
+// Includes: Project
 #include "S2-JsonModel_Export.h"
+#include "square-JsonModel.h"
 
 
 class S2_JSONMODEL_EXPORT JsonFrame : public FrameInterface {
@@ -27,7 +26,7 @@ class S2_JSONMODEL_EXPORT JsonFrame : public FrameInterface {
 
         Q_OBJECT
 
-public: /* ---------------------------------------------------------- [PUBLIC] */
+public: // ---------------------------------------------------------- PUBLIC
 
     explicit JsonFrame(QWidget* parent = 0);
 
@@ -44,7 +43,7 @@ private slots:
     void httpFinished();
 
 
-private: /* --------------------------------------------------------- [PRIVATE] */
+private: // --------------------------------------------------------- PRIVATE
 
     QJsonDocument document_;
     JsonModel* model_;
@@ -59,7 +58,6 @@ private: /* --------------------------------------------------------- [PRIVATE] 
     QAction* action_RefreshOutput = 0;
     QAction* action_NetPost_ = 0;
     QAction* action_NetGet_ = 0;
-
 
     QLineEdit* urlLineEdit_;
     QTextEdit* responseTextEdit_;
